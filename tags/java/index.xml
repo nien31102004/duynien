@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Java on TimoBlog</title><link>https://nien31102004.github.io/duynien/tags/java/</link><description>Recent content in Java on TimoBlog</description><generator>Hugo</generator><language>vi</language><lastBuildDate>Sat, 18 Oct 2025 16:00:00 +0700</lastBuildDate><atom:link href="https://nien31102004.github.io/duynien/tags/java/index.xml" rel="self" type="application/rss+xml"/><item><title>Java vs JavaScript – Cùng tên nhưng khác biệt một trời một vực!</title><link>https://nien31102004.github.io/duynien/posts/bai1/</link><pubDate>Fri, 10 Oct 2025 08:00:00 +0700</pubDate><guid>https://nien31102004.github.io/duynien/posts/bai1/</guid><description>&lt;h2 id="-giới-thiệu"&gt;
+ 🧠 Giới thiệu
+ &lt;a class="heading-link" href="#-gi%e1%bb%9bi-thi%e1%bb%87u"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Đây là nhầm lẫn kinh điển nhất mà bất kỳ người mới nào khi bước chân vào lập trình cũng gặp phải: &lt;strong&gt;Java&lt;/strong&gt; và &lt;strong&gt;JavaScript&lt;/strong&gt; có phải là một hay có liên quan mật thiết không? Câu trả lời thẳng thắn là: &lt;strong&gt;Không&lt;/strong&gt;. Sự tương đồng lớn nhất giữa chúng chỉ là cái tên, được đặt vì mục đích marketing ở thời kỳ đầu. Bài viết này sẽ giúp bạn phân biệt rõ ràng hai &amp;ldquo;người anh em&amp;rdquo; này.&lt;/p&gt;</description></item><item><title>Kiểu Dữ Liệu: Static (Java) vs Dynamic (JavaScript) và Cuộc chiến Var, Let, Const</title><link>https://nien31102004.github.io/duynien/posts/bai2/</link><pubDate>Sat, 11 Oct 2025 09:00:00 +0700</pubDate><guid>https://nien31102004.github.io/duynien/posts/bai2/</guid><description>&lt;h2 id="-giới-thiệu"&gt;
+ 🧠 Giới thiệu
+ &lt;a class="heading-link" href="#-gi%e1%bb%9bi-thi%e1%bb%87u"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Hiểu cách một ngôn ngữ quản lý biến và kiểu dữ liệu là bước đầu để viết code hiệu quả và tránh lỗi vặt.&lt;br&gt;
+Sự khác biệt lớn nhất giữa Java và JavaScript nằm ở hệ thống kiểu (Type System): &lt;strong&gt;Java là kiểu tĩnh&lt;/strong&gt;, &lt;strong&gt;JavaScript là kiểu động&lt;/strong&gt;. Điều này ảnh hưởng tới cách khai báo, sử dụng và debug code.&lt;/p&gt;</description></item><item><title>Lập Trình Hướng Đối Tượng: Class Thật (Java) và Prototype (JavaScript)</title><link>https://nien31102004.github.io/duynien/posts/bai3/</link><pubDate>Sun, 12 Oct 2025 10:00:00 +0700</pubDate><guid>https://nien31102004.github.io/duynien/posts/bai3/</guid><description>&lt;h2 id="-giới-thiệu"&gt;
+ 🧠 Giới thiệu
+ &lt;a class="heading-link" href="#-gi%e1%bb%9bi-thi%e1%bb%87u"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Lập trình hướng đối tượng (OOP) là trụ cột của phát triển phần mềm hiện đại. Cả Java và JavaScript đều hỗ trợ OOP, nhưng theo hai triết lý hoàn toàn khác nhau: &lt;strong&gt;Java là ngôn ngữ hướng Class&lt;/strong&gt;, trong khi &lt;strong&gt;JavaScript là ngôn ngữ hướng Prototype&lt;/strong&gt;. Hiểu rõ sự khác biệt này là chìa khóa để viết code OOP hiệu quả trong cả hai môi trường.&lt;/p&gt;</description></item><item><title>REST API Siêu Gọn: Spring Boot (Java) vs Express.js (Node.js)</title><link>https://nien31102004.github.io/duynien/posts/bai4/</link><pubDate>Mon, 13 Oct 2025 11:00:00 +0700</pubDate><guid>https://nien31102004.github.io/duynien/posts/bai4/</guid><description>&lt;h2 id="-giới-thiệu"&gt;
+ 🧠 Giới thiệu
+ &lt;a class="heading-link" href="#-gi%e1%bb%9bi-thi%e1%bb%87u"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Xây dựng &lt;strong&gt;REST API&lt;/strong&gt; là kỹ năng Backend cốt lõi. Trong thế giới Java, &lt;strong&gt;Spring Boot&lt;/strong&gt; là vua. Trong thế giới JavaScript, &lt;strong&gt;Node.js&lt;/strong&gt; cùng framework &lt;strong&gt;Express.js&lt;/strong&gt; là lựa chọn phổ biến nhất. Bài viết này sẽ so sánh cách bạn tạo một API đơn giản trả về JSON trong cả hai nền tảng.&lt;/p&gt;
+&lt;h2 id="-phần-1-java-backend-với-spring-boot"&gt;
+ ⚙️ Phần 1: Java Backend với Spring Boot
+ &lt;a class="heading-link" href="#-ph%e1%ba%a7n-1-java-backend-v%e1%bb%9bi-spring-boot"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Spring Boot được thiết kế để tạo ra các ứng dụng độc lập (standalone) với cấu hình tối thiểu.&lt;/p&gt;</description></item><item><title>Todo List Song Song: Desktop với JavaFX và Web App với React</title><link>https://nien31102004.github.io/duynien/posts/bai5/</link><pubDate>Tue, 14 Oct 2025 12:00:00 +0700</pubDate><guid>https://nien31102004.github.io/duynien/posts/bai5/</guid><description>&lt;h2 id="-giới-thiệu"&gt;
+ 🧠 Giới thiệu
+ &lt;a class="heading-link" href="#-gi%e1%bb%9bi-thi%e1%bb%87u"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Dự án &lt;strong&gt;Todo List&lt;/strong&gt; là bài thực hành tốt để nắm quản lý UI và state. Bài này so sánh hai cách tiếp cận: ứng dụng Desktop bằng &lt;strong&gt;JavaFX&lt;/strong&gt; và ứng dụng Web bằng &lt;strong&gt;React&lt;/strong&gt;. Mục tiêu: so sánh kiến trúc, state management và cách triển khai.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="-phần-1-javafx--ứng-dụng-desktop-native"&gt;
+ ⚙️ Phần 1: JavaFX — Ứng dụng Desktop Native
+ &lt;a class="heading-link" href="#-ph%e1%ba%a7n-1-javafx--%e1%bb%a9ng-d%e1%bb%a5ng-desktop-native"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;JavaFX cung cấp component native, binding và ObservableList để đồng bộ dữ liệu với UI. Phù hợp cho ứng dụng cần truy cập hệ thống và UI native.&lt;/p&gt;</description></item><item><title>Trao Đổi Dữ Liệu: Jackson (Java) và Fetch API (JS) – Nói chuyện bằng JSON</title><link>https://nien31102004.github.io/duynien/posts/bai6/</link><pubDate>Wed, 15 Oct 2025 13:00:00 +0700</pubDate><guid>https://nien31102004.github.io/duynien/posts/bai6/</guid><description>&lt;h2 id="-giới-thiệu"&gt;
+ 🧠 Giới thiệu
+ &lt;a class="heading-link" href="#-gi%e1%bb%9bi-thi%e1%bb%87u"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;JSON (JavaScript Object Notation)&lt;/strong&gt; là định dạng chuẩn để trao đổi dữ liệu giữa backend và frontend. Bài này so sánh cách (de)serialize và gọi API trong Java (Jackson) và JavaScript (Fetch + native JSON).&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="-phần-1-java--jackson-objectmapper"&gt;
+ ⚙️ Phần 1: Java — Jackson (ObjectMapper)
+ &lt;a class="heading-link" href="#-ph%e1%ba%a7n-1-java--jackson-objectmapper"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Jackson là thư viện phổ biến để (de)serialize JSON trong Java. POJO cần constructor không tham số (và getters/setters nếu dùng truy cập private fields).&lt;/p&gt;</description></item><item><title>Triết Lý Bất Đồng Bộ: Threading (Java) vs Event Loop (JavaScript)</title><link>https://nien31102004.github.io/duynien/posts/bai7/</link><pubDate>Thu, 16 Oct 2025 14:00:00 +0700</pubDate><guid>https://nien31102004.github.io/duynien/posts/bai7/</guid><description>&lt;h2 id="-giới-thiệu"&gt;
+ 🧠 Giới thiệu
+ &lt;a class="heading-link" href="#-gi%e1%bb%9bi-thi%e1%bb%87u"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Quản lý các tác vụ bất đồng bộ (async) là nền tảng cho ứng dụng hiệu năng cao. Java thường dùng multi-threading; JavaScript dùng event loop + Promise/async-await. Bài này so sánh hai mô hình, đưa ví dụ và gợi ý khi chọn giải pháp.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="-phần-1-java--thread-executorservice-future"&gt;
+ ⚙️ Phần 1: Java — Thread, ExecutorService, Future
+ &lt;a class="heading-link" href="#-ph%e1%ba%a7n-1-java--thread-executorservice-future"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Sử dụng ExecutorService để quản lý pool thread an toàn.&lt;/p&gt;</description></item><item><title>Full-Stack Hoàn Chỉnh: Kết Hợp Sức Mạnh Java Backend (Spring Boot) và React Frontend</title><link>https://nien31102004.github.io/duynien/posts/bai8/</link><pubDate>Fri, 17 Oct 2025 15:00:00 +0700</pubDate><guid>https://nien31102004.github.io/duynien/posts/bai8/</guid><description>&lt;h2 id="-giới-thiệu"&gt;
+ 🧠 Giới thiệu
+ &lt;a class="heading-link" href="#-gi%e1%bb%9bi-thi%e1%bb%87u"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Đây là hướng dẫn tổng hợp để kết nối một backend Java (Spring Boot) với frontend React: thiết kế API, xử lý CORS, gọi API từ React và các phương án triển khai (separate vs embed). Mục tiêu: bạn có thể xây dựng, chạy và triển khai một ứng dụng full‑stack hoàn chỉnh.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="-phần-1-spring-boot--api-backend--cors"&gt;
+ ⚙️ Phần 1: Spring Boot — API Backend &amp;amp; CORS
+ &lt;a class="heading-link" href="#-ph%e1%ba%a7n-1-spring-boot--api-backend--cors"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Backend cung cấp REST API trả JSON. Nếu frontend chạy trên cổng khác (ví dụ React: 3000), cần cấu hình CORS.&lt;/p&gt;</description></item><item><title>Tối Ưu Hiệu Năng: Mẹo Vặt Giúp Java Chạy Nhanh và JavaScript Không Bị Đơ</title><link>https://nien31102004.github.io/duynien/posts/bai9/</link><pubDate>Sat, 18 Oct 2025 16:00:00 +0700</pubDate><guid>https://nien31102004.github.io/duynien/posts/bai9/</guid><description>&lt;h2 id="-giới-thiệu"&gt;
+ 🧠 Giới thiệu
+ &lt;a class="heading-link" href="#-gi%e1%bb%9bi-thi%e1%bb%87u"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Tối ưu hiệu năng không chỉ là làm cho code chạy nhanh hơn, mà còn là sử dụng tài nguyên (CPU, bộ nhớ) một cách hiệu quả. Do có kiến trúc rất khác nhau (Java là JVM, JavaScript là Event Loop), chiến lược tối ưu cho mỗi ngôn ngữ cũng khác biệt.&lt;/p&gt;
+&lt;h2 id="-phần-1-tối-ưu-hiệu-năng-trong-java"&gt;
+ ⚙️ Phần 1: Tối ưu hiệu năng trong Java
+ &lt;a class="heading-link" href="#-ph%e1%ba%a7n-1-t%e1%bb%91i-%c6%b0u-hi%e1%bb%87u-n%c4%83ng-trong-java"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Việc tối ưu Java thường tập trung vào quản lý bộ nhớ (Heap Memory), tối thiểu hóa việc tạo Object không cần thiết, và tận dụng đa luồng (Threading) hiệu quả.&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,80 @@
+<!doctype html><html lang=vi><head><title>Triết Lý Bất Đồng Bộ: Threading (Java) vs Event Loop (JavaScript) · TimoBlog</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta name=author content="Nguyễn Duy Niên"><meta name=description content="
+  🧠 Giới thiệu
+  
+    
+    Link to heading
+  
+
+Quản lý các tác vụ bất đồng bộ (async) là nền tảng cho ứng dụng hiệu năng cao. Java thường dùng multi-threading; JavaScript dùng event loop + Promise/async-await. Bài này so sánh hai mô hình, đưa ví dụ và gợi ý khi chọn giải pháp.
+
+
+  ⚙️ Phần 1: Java — Thread, ExecutorService, Future
+  
+    
+    Link to heading
+  
+
+Sử dụng ExecutorService để quản lý pool thread an toàn."><meta name=keywords content="blog,developer,personal"><meta name=twitter:card content="summary"><meta name=twitter:title content="Triết Lý Bất Đồng Bộ: Threading (Java) vs Event Loop (JavaScript)"><meta name=twitter:description content="🧠 Giới thiệuLink to headingQuản lý các tác vụ bất đồng bộ (async) là nền tảng cho ứng dụng hiệu năng cao. Java thường dùng multi-threading; JavaScript dùng event loop + Promise/async-await. Bài này so sánh hai mô hình, đưa ví dụ và gợi ý khi chọn giải pháp.
+⚙️ Phần 1: Java — Thread, ExecutorService, FutureLink to headingSử dụng ExecutorService để quản lý pool thread an toàn."><meta property="og:url" content="https://nien31102004.github.io/duynien/posts/bai7/"><meta property="og:site_name" content="TimoBlog"><meta property="og:title" content="Triết Lý Bất Đồng Bộ: Threading (Java) vs Event Loop (JavaScript)"><meta property="og:description" content="🧠 Giới thiệuLink to headingQuản lý các tác vụ bất đồng bộ (async) là nền tảng cho ứng dụng hiệu năng cao. Java thường dùng multi-threading; JavaScript dùng event loop + Promise/async-await. Bài này so sánh hai mô hình, đưa ví dụ và gợi ý khi chọn giải pháp.
+⚙️ Phần 1: Java — Thread, ExecutorService, FutureLink to headingSử dụng ExecutorService để quản lý pool thread an toàn."><meta property="og:locale" content="vi"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-10-16T14:00:00+07:00"><meta property="article:modified_time" content="2025-10-16T14:00:00+07:00"><meta property="article:tag" content="Java"><meta property="article:tag" content="JavaScript"><meta property="article:tag" content="Async"><meta property="article:tag" content="Concurrency"><meta property="article:tag" content="Nâng Cao"><link rel=canonical href=https://nien31102004.github.io/duynien/posts/bai7/><link rel=preload href=https://nien31102004.github.io/duynien/fonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=https://nien31102004.github.io/duynien/fonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=https://nien31102004.github.io/duynien/fonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin><link rel=stylesheet href=https://nien31102004.github.io/duynien/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin=anonymous media=screen><link rel=stylesheet href=https://nien31102004.github.io/duynien/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=https://nien31102004.github.io/duynien/img/favicon.svg sizes=any><link rel=icon type=image/png href=https://nien31102004.github.io/duynien/img/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=https://nien31102004.github.io/duynien/img/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=https://nien31102004.github.io/duynien/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=https://nien31102004.github.io/duynien/images/apple-touch-icon.png><link rel=manifest href=https://nien31102004.github.io/duynien/site.webmanifest><link rel=mask-icon href=https://nien31102004.github.io/duynien/images/safari-pinned-tab.svg color=#5bbad5></head><body class="preload-transitions colorscheme-auto"><div class=float-container><a id=dark-mode-toggle class=colorscheme-toggle><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></a></div><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=https://nien31102004.github.io/duynien/>TimoBlog
+</a><input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle><i class="fa-solid fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=https://nien31102004.github.io/duynien/gioi_thieu/>Giới thiệu</a></li><li class=navigation-item><a class=navigation-link href=https://nien31102004.github.io/duynien/posts/>Bài viết</a></li><li class=navigation-item><a class=navigation-link href=https://nien31102004.github.io/duynien/lien_he/>Liên hệ</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title><a class=title-link href=https://nien31102004.github.io/duynien/posts/bai7/>Triết Lý Bất Đồng Bộ: Threading (Java) vs Event Loop (JavaScript)</a></h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fa-solid fa-calendar" aria-hidden=true></i>
+<time datetime=2025-10-16T14:00:00+07:00>tháng 10 16, 2025
+</time></span><span class=reading-time><i class="fa-solid fa-clock" aria-hidden=true></i></span></div><div class=tags><i class="fa-solid fa-tag" aria-hidden=true></i>
+<span class=tag><a href=https://nien31102004.github.io/duynien/tags/java/>Java</a>
+</span><span class=separator>•</span>
+<span class=tag><a href=https://nien31102004.github.io/duynien/tags/javascript/>JavaScript</a>
+</span><span class=separator>•</span>
+<span class=tag><a href=https://nien31102004.github.io/duynien/tags/async/>Async</a>
+</span><span class=separator>•</span>
+<span class=tag><a href=https://nien31102004.github.io/duynien/tags/concurrency/>Concurrency</a>
+</span><span class=separator>•</span>
+<span class=tag><a href=https://nien31102004.github.io/duynien/tags/n%C3%A2ng-cao/>Nâng Cao</a></span></div></div></header><div class=post-content><h2 id=-giới-thiệu>🧠 Giới thiệu
+<a class=heading-link href=#-gi%e1%bb%9bi-thi%e1%bb%87u><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>Quản lý các tác vụ bất đồng bộ (async) là nền tảng cho ứng dụng hiệu năng cao. Java thường dùng multi-threading; JavaScript dùng event loop + Promise/async-await. Bài này so sánh hai mô hình, đưa ví dụ và gợi ý khi chọn giải pháp.</p><hr><h2 id=-phần-1-java--thread-executorservice-future>⚙️ Phần 1: Java — Thread, ExecutorService, Future
+<a class=heading-link href=#-ph%e1%ba%a7n-1-java--thread-executorservice-future><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>Sử dụng ExecutorService để quản lý pool thread an toàn.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>import</span> java.util.concurrent.*;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>JavaConcurrencyDemo</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span>(String<span style=color:#f92672>[]</span> args) <span style=color:#66d9ef>throws</span> Exception {
+</span></span><span style=display:flex><span>        ExecutorService executor <span style=color:#f92672>=</span> Executors.<span style=color:#a6e22e>newFixedThreadPool</span>(2);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        Callable<span style=color:#f92672>&lt;</span>String<span style=color:#f92672>&gt;</span> task <span style=color:#f92672>=</span> () <span style=color:#f92672>-&gt;</span> {
+</span></span><span style=display:flex><span>            Thread.<span style=color:#a6e22e>sleep</span>(2000);
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;Dữ liệu đã sẵn sàng!&#34;</span>;
+</span></span><span style=display:flex><span>        };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        Future<span style=color:#f92672>&lt;</span>String<span style=color:#f92672>&gt;</span> future <span style=color:#f92672>=</span> executor.<span style=color:#a6e22e>submit</span>(task);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;Đang chờ kết quả...&#34;</span>);
+</span></span><span style=display:flex><span>        String result <span style=color:#f92672>=</span> future.<span style=color:#a6e22e>get</span>(); <span style=color:#75715e>// blocking</span>
+</span></span><span style=display:flex><span>        System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;Kết quả: &#34;</span> <span style=color:#f92672>+</span> result);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        executor.<span style=color:#a6e22e>shutdown</span>();
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Ưu/nhược:</p><ul><li>Ưu: tận dụng nhiều CPU cho tác vụ CPU-bound.</li><li>Nhược: cần đồng bộ, dễ gặp race condition, quản lý phức tạp.</li></ul><hr><h2 id=-phần-2-javascript--event-loop-promise-asyncawait>⚙️ Phần 2: JavaScript — Event Loop, Promise, Async/Await
+<a class=heading-link href=#-ph%e1%ba%a7n-2-javascript--event-loop-promise-asyncawait><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>Event loop giúp xử lý I/O không blocking; async/await làm code dễ đọc.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>fetchUserData</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> Promise(<span style=color:#a6e22e>resolve</span> =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>setTimeout</span>(() =&gt; <span style=color:#a6e22e>resolve</span>(<span style=color:#e6db74>&#34;Dữ liệu đã sẵn sàng!&#34;</span>), <span style=color:#ae81ff>2000</span>);
+</span></span><span style=display:flex><span>  });
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>async</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>runAsyncDemo</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Đang chờ kết quả...&#34;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>result</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>fetchUserData</span>();
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Kết quả: &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>result</span>);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>runAsyncDemo</span>();
+</span></span></code></pre></div><p>Ưu/nhược:</p><ul><li>Ưu: rất hiệu quả cho I/O-bound, code dễ đọc với async/await.</li><li>Nhược: tính toán nặng có thể block event loop → dùng worker/thread nếu cần.</li></ul><hr><h2 id=-so-sánh-tóm-tắt>🧩 So sánh (Tóm tắt)
+<a class=heading-link href=#-so-s%c3%a1nh-t%c3%b3m-t%e1%ba%aft><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><table><thead><tr><th>Khía cạnh</th><th style=text-align:right>Java (Threads)</th><th>JavaScript (Event Loop)</th></tr></thead><tbody><tr><td>Mô hình</td><td style=text-align:right>Multi-threaded</td><td>Single-threaded + Event Loop</td></tr><tr><td>Phù hợp</td><td style=text-align:right>CPU-bound, tính toán nặng</td><td>I/O-bound, network, UI</td></tr><tr><td>Quản lý lỗi</td><td style=text-align:right>Đồng bộ phức tạp (locks)</td><td>Promise rejection / try/catch async</td></tr><tr><td>Khi dùng</td><td style=text-align:right>Tính toán, background processing</td><td>Giao tiếp mạng, xử lý UI, non-blocking I/O</td></tr></tbody></table><hr><h2 id=-tham-khảo>📘 Tham khảo
+<a class=heading-link href=#-tham-kh%e1%ba%a3o><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ul><li><a href=https://docs.oracle.com/javase/tutorial/essential/concurrency/ class=external-link target=_blank rel=noopener>Oracle Java Concurrency</a></li><li><a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function class=external-link target=_blank rel=noopener>MDN — Async functions</a></li></ul></div><footer></footer></article></section></div><footer class=footer><section class=container>©
+2023 -
+2025
+Nguyễn Duy Niên
+·
+<a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> & <a href=https://github.com/luizdepra/hugo-coder/ target=_blank rel=noopener>Coder</a>.</section></footer></main><script src=https://nien31102004.github.io/duynien/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script></body></html>

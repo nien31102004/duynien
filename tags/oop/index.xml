@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OOP on TimoBlog</title><link>https://nien31102004.github.io/duynien/tags/oop/</link><description>Recent content in OOP on TimoBlog</description><generator>Hugo</generator><language>vi</language><lastBuildDate>Sun, 12 Oct 2025 10:00:00 +0700</lastBuildDate><atom:link href="https://nien31102004.github.io/duynien/tags/oop/index.xml" rel="self" type="application/rss+xml"/><item><title>Lập Trình Hướng Đối Tượng: Class Thật (Java) và Prototype (JavaScript)</title><link>https://nien31102004.github.io/duynien/posts/bai3/</link><pubDate>Sun, 12 Oct 2025 10:00:00 +0700</pubDate><guid>https://nien31102004.github.io/duynien/posts/bai3/</guid><description>&lt;h2 id="-giới-thiệu"&gt;
+ 🧠 Giới thiệu
+ &lt;a class="heading-link" href="#-gi%e1%bb%9bi-thi%e1%bb%87u"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Lập trình hướng đối tượng (OOP) là trụ cột của phát triển phần mềm hiện đại. Cả Java và JavaScript đều hỗ trợ OOP, nhưng theo hai triết lý hoàn toàn khác nhau: &lt;strong&gt;Java là ngôn ngữ hướng Class&lt;/strong&gt;, trong khi &lt;strong&gt;JavaScript là ngôn ngữ hướng Prototype&lt;/strong&gt;. Hiểu rõ sự khác biệt này là chìa khóa để viết code OOP hiệu quả trong cả hai môi trường.&lt;/p&gt;</description></item></channel></rss>

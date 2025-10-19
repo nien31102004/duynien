@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>JSON on TimoBlog</title><link>https://nien31102004.github.io/duynien/tags/json/</link><description>Recent content in JSON on TimoBlog</description><generator>Hugo</generator><language>vi</language><lastBuildDate>Wed, 15 Oct 2025 13:00:00 +0700</lastBuildDate><atom:link href="https://nien31102004.github.io/duynien/tags/json/index.xml" rel="self" type="application/rss+xml"/><item><title>Trao Đổi Dữ Liệu: Jackson (Java) và Fetch API (JS) – Nói chuyện bằng JSON</title><link>https://nien31102004.github.io/duynien/posts/bai6/</link><pubDate>Wed, 15 Oct 2025 13:00:00 +0700</pubDate><guid>https://nien31102004.github.io/duynien/posts/bai6/</guid><description>&lt;h2 id="-giới-thiệu"&gt;
+ 🧠 Giới thiệu
+ &lt;a class="heading-link" href="#-gi%e1%bb%9bi-thi%e1%bb%87u"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;JSON (JavaScript Object Notation)&lt;/strong&gt; là định dạng chuẩn để trao đổi dữ liệu giữa backend và frontend. Bài này so sánh cách (de)serialize và gọi API trong Java (Jackson) và JavaScript (Fetch + native JSON).&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="-phần-1-java--jackson-objectmapper"&gt;
+ ⚙️ Phần 1: Java — Jackson (ObjectMapper)
+ &lt;a class="heading-link" href="#-ph%e1%ba%a7n-1-java--jackson-objectmapper"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Jackson là thư viện phổ biến để (de)serialize JSON trong Java. POJO cần constructor không tham số (và getters/setters nếu dùng truy cập private fields).&lt;/p&gt;</description></item></channel></rss>
