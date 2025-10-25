@@ -1,84 +1,429 @@
-<!doctype html><html lang=vi><head><title>Lập Trình Hướng Đối Tượng: Class Thật (Java) và Prototype (JavaScript) · TimoBlog</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta name=author content="Nguyễn Duy Niên"><meta name=description content="
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <title>
+  Lập Trình Hướng Đối Tượng: Class Thật (Java) và Prototype (JavaScript) · TimoBlog
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Nguyễn Duy Niên">
+<meta name="description" content="
   🧠 Giới thiệu
   
     
     Link to heading
   
 
-Lập trình hướng đối tượng (OOP) là trụ cột của phát triển phần mềm hiện đại. Cả Java và JavaScript đều hỗ trợ OOP, nhưng theo hai triết lý hoàn toàn khác nhau: Java là ngôn ngữ hướng Class, trong khi JavaScript là ngôn ngữ hướng Prototype. Hiểu rõ sự khác biệt này là chìa khóa để viết code OOP hiệu quả trong cả hai môi trường."><meta name=keywords content="blog,developer,personal"><meta name=twitter:card content="summary"><meta name=twitter:title content="Lập Trình Hướng Đối Tượng: Class Thật (Java) và Prototype (JavaScript)"><meta name=twitter:description content="🧠 Giới thiệuLink to headingLập trình hướng đối tượng (OOP) là trụ cột của phát triển phần mềm hiện đại. Cả Java và JavaScript đều hỗ trợ OOP, nhưng theo hai triết lý hoàn toàn khác nhau: Java là ngôn ngữ hướng Class, trong khi JavaScript là ngôn ngữ hướng Prototype. Hiểu rõ sự khác biệt này là chìa khóa để viết code OOP hiệu quả trong cả hai môi trường."><meta property="og:url" content="https://nien31102004.github.io/duynien/posts/bai3/"><meta property="og:site_name" content="TimoBlog"><meta property="og:title" content="Lập Trình Hướng Đối Tượng: Class Thật (Java) và Prototype (JavaScript)"><meta property="og:description" content="🧠 Giới thiệuLink to headingLập trình hướng đối tượng (OOP) là trụ cột của phát triển phần mềm hiện đại. Cả Java và JavaScript đều hỗ trợ OOP, nhưng theo hai triết lý hoàn toàn khác nhau: Java là ngôn ngữ hướng Class, trong khi JavaScript là ngôn ngữ hướng Prototype. Hiểu rõ sự khác biệt này là chìa khóa để viết code OOP hiệu quả trong cả hai môi trường."><meta property="og:locale" content="vi"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-10-12T10:00:00+07:00"><meta property="article:modified_time" content="2025-10-12T10:00:00+07:00"><meta property="article:tag" content="Java"><meta property="article:tag" content="JavaScript"><meta property="article:tag" content="OOP"><meta property="article:tag" content="Cơ Bản"><link rel=canonical href=https://nien31102004.github.io/duynien/posts/bai3/><link rel=preload href=https://nien31102004.github.io/duynien/fonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=https://nien31102004.github.io/duynien/fonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=https://nien31102004.github.io/duynien/fonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin><link rel=stylesheet href=https://nien31102004.github.io/duynien/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin=anonymous media=screen><link rel=stylesheet href=https://nien31102004.github.io/duynien/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=https://nien31102004.github.io/duynien/img/favicon.svg sizes=any><link rel=icon type=image/png href=https://nien31102004.github.io/duynien/img/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=https://nien31102004.github.io/duynien/img/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=https://nien31102004.github.io/duynien/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=https://nien31102004.github.io/duynien/images/apple-touch-icon.png><link rel=manifest href=https://nien31102004.github.io/duynien/site.webmanifest><link rel=mask-icon href=https://nien31102004.github.io/duynien/images/safari-pinned-tab.svg color=#5bbad5></head><body class="preload-transitions colorscheme-auto"><div class=float-container><a id=dark-mode-toggle class=colorscheme-toggle><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></a></div><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=https://nien31102004.github.io/duynien/>TimoBlog
-</a><input type=checkbox id=menu-toggle>
-<label class="menu-button float-right" for=menu-toggle><i class="fa-solid fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=https://nien31102004.github.io/duynien/gioi_thieu/>Giới thiệu</a></li><li class=navigation-item><a class=navigation-link href=https://nien31102004.github.io/duynien/posts/>Bài viết</a></li><li class=navigation-item><a class=navigation-link href=https://nien31102004.github.io/duynien/lien_he/>Liên hệ</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title><a class=title-link href=https://nien31102004.github.io/duynien/posts/bai3/>Lập Trình Hướng Đối Tượng: Class Thật (Java) và Prototype (JavaScript)</a></h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fa-solid fa-calendar" aria-hidden=true></i>
-<time datetime=2025-10-12T10:00:00+07:00>tháng 10 12, 2025
-</time></span><span class=reading-time><i class="fa-solid fa-clock" aria-hidden=true></i></span></div><div class=tags><i class="fa-solid fa-tag" aria-hidden=true></i>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/java/>Java</a>
-</span><span class=separator>•</span>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/javascript/>JavaScript</a>
-</span><span class=separator>•</span>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/oop/>OOP</a>
-</span><span class=separator>•</span>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/c%C6%A1-b%E1%BA%A3n/>Cơ Bản</a></span></div></div></header><div class=post-content><h2 id=-giới-thiệu>🧠 Giới thiệu
-<a class=heading-link href=#-gi%e1%bb%9bi-thi%e1%bb%87u><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Lập trình hướng đối tượng (OOP) là trụ cột của phát triển phần mềm hiện đại. Cả Java và JavaScript đều hỗ trợ OOP, nhưng theo hai triết lý hoàn toàn khác nhau: <strong>Java là ngôn ngữ hướng Class</strong>, trong khi <strong>JavaScript là ngôn ngữ hướng Prototype</strong>. Hiểu rõ sự khác biệt này là chìa khóa để viết code OOP hiệu quả trong cả hai môi trường.</p><h2 id=-phần-1-oop-thuần-túy-trong-java-class-based>⚙️ Phần 1: OOP Thuần Túy trong Java (Class-Based)
-<a class=heading-link href=#-ph%e1%ba%a7n-1-oop-thu%e1%ba%a7n-t%c3%bay-trong-java-class-based><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Java là một ngôn ngữ OOP cổ điển. Mọi thứ trong Java (trừ các kiểu nguyên thủy) đều xoay quanh <strong>Class</strong> (Lớp).</p><h3 id=class-và-kế-thừa><strong>Class và Kế thừa</strong>
-<a class=heading-link href=#class-v%c3%a0-k%e1%ba%bf-th%e1%bb%aba><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><ul><li><strong>Class</strong> là bản thiết kế để tạo ra các <strong>Object</strong> (Đối tượng).</li><li><strong>Kế thừa</strong> được thực hiện bằng từ khóa <code>extends</code> và <code>implements</code>.</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#75715e>// Java: Class là bản thiết kế</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Animal</span> {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>eat</span>() {
-</span></span><span style=display:flex><span>        System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;Animal is eating...&#34;</span>);
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>// Kế thừa Class</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Dog</span> <span style=color:#66d9ef>extends</span> Animal {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>bark</span>() {
-</span></span><span style=display:flex><span>        System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;Woof!&#34;</span>);
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>// Khởi tạo Object</span>
-</span></span><span style=display:flex><span>Dog myDog <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Dog();
-</span></span><span style=display:flex><span>myDog.<span style=color:#a6e22e>eat</span>(); <span style=color:#75715e>// Output: Animal is eating...</span>
-</span></span></code></pre></div><p>Tóm lại: Java tạo ra các Object từ các Class. OOP của Java dựa trên cấu trúc phân cấp (Inheritance Hierarchy).</p><hr><h2 id=-phần-2-oop-dựa-trên-prototype-trong-javascript>🧩 Phần 2: OOP Dựa trên Prototype trong JavaScript
-<a class=heading-link href=#-ph%e1%ba%a7n-2-oop-d%e1%bb%b1a-tr%c3%aan-prototype-trong-javascript><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Trước ES6 (2015), JavaScript không có từ khóa <code>class</code>. Nó dùng Prototype Chain (Chuỗi Prototype) để thực hiện kế thừa và chia sẻ thuộc tính/phương thức. Mọi Object trong JavaScript đều có một prototype (một Object khác) mà nó có thể kế thừa thuộc tính/phương thức.</p><p>Khi bạn truy cập một thuộc tính của Object, nếu Object đó không có, JavaScript sẽ tìm kiếm tiếp trên prototype của nó — cứ thế tạo thành một chuỗi.</p><h3 id=ví-dụ-tạo-đối-tượng-và-kế-thừa-qua-prototype>Ví dụ: tạo đối tượng và kế thừa qua prototype
-<a class=heading-link href=#v%c3%ad-d%e1%bb%a5-t%e1%ba%a1o-%c4%91%e1%bb%91i-t%c6%b0%e1%bb%a3ng-v%c3%a0-k%e1%ba%bf-th%e1%bb%aba-qua-prototype><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#75715e>// JavaScript: Object kế thừa trực tiếp từ Object khác
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>animal</span> <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>eat</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span>() {
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Animal is eating...&#34;</span>);
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>};
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>// Object &#39;dog&#39; được tạo ra và kế thừa từ &#39;animal&#39;
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>dog</span> <span style=color:#f92672>=</span> Object.<span style=color:#a6e22e>create</span>(<span style=color:#a6e22e>animal</span>);
-</span></span><span style=display:flex><span><span style=color:#a6e22e>dog</span>.<span style=color:#a6e22e>bark</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span>() {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Woof!&#34;</span>);
-</span></span><span style=display:flex><span>};
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>dog</span>.<span style=color:#a6e22e>eat</span>(); <span style=color:#75715e>// Output: Animal is eating...
-</span></span></span></code></pre></div><h3 id=class-giả-lập-sugar-syntax-trong-es6>Class &ldquo;Giả lập&rdquo; (sugar syntax) trong ES6
-<a class=heading-link href=#class-gi%e1%ba%a3-l%e1%ba%adp-sugar-syntax-trong-es6><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>ES6 thêm cú pháp <code>class</code> nhưng về bản chất vẫn dùng prototype chain bên dưới.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#75715e>// JavaScript ES6: Dùng cú pháp Class (thực chất vẫn là Prototype)
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Animal</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>eat</span>() {
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Animal is eating...&#34;</span>);
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Dog</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>Animal</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>bark</span>() {
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Woof!&#34;</span>);
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>myDog</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Dog</span>();
-</span></span><span style=display:flex><span><span style=color:#a6e22e>myDog</span>.<span style=color:#a6e22e>eat</span>(); <span style=color:#75715e>// Vẫn chạy, vì Dog kế thừa Animal qua Prototype Chain
-</span></span></span></code></pre></div><hr><h2 id=kết-luận-tóm-tắt-so-sánh>Kết luận (Tóm tắt so sánh)
-<a class=heading-link href=#k%e1%ba%bft-lu%e1%ba%adn-t%c3%b3m-t%e1%ba%aft-so-s%c3%a1nh><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><table><thead><tr><th>Đặc điểm</th><th>Java (Class-based)</th><th>JavaScript (Prototype-based)</th></tr></thead><tbody><tr><td>Khởi tạo</td><td>Từ Class (new MyClass())</td><td>Từ Object khác (Object.create()) hoặc Class ES6</td></tr><tr><td>Kế thừa</td><td>extends (kế thừa theo lớp)</td><td>Prototype chain (kế thừa theo prototype)</td></tr><tr><td>Lợi thế</td><td>Cấu trúc chặt chẽ, dễ quản lý, phù hợp dự án lớn</td><td>Linh hoạt, phù hợp với mô hình dữ liệu động và nhanh phát triển</td></tr></tbody></table><p>Nếu muốn viết code JS theo phong cách &ldquo;chuẩn Java&rdquo;, hãy dùng cú pháp <code>class</code>/<code>extends</code> của ES6 — nhưng đừng quên rằng bên dưới vẫn là cơ chế prototype hoạt động.</p><p>📘 Tham khảo:</p><ul><li><a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain class=external-link target=_blank rel=noopener>MDN: Inheritance and the prototype chain</a></li><li><a href=https://docs.oracle.com/javase/tutorial/java/javaOO/classes.html class=external-link target=_blank rel=noopener>Java Tutorials: Classes and Objects (Oracle)</a></li></ul></div><footer></footer></article></section></div><footer class=footer><section class=container>©
-2023 -
-2025
-Nguyễn Duy Niên
-·
-<a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> & <a href=https://github.com/luizdepra/hugo-coder/ target=_blank rel=noopener>Coder</a>.</section></footer></main><script src=https://nien31102004.github.io/duynien/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script></body></html>
+Lập trình hướng đối tượng (OOP) là trụ cột của phát triển phần mềm hiện đại. Cả Java và JavaScript đều hỗ trợ OOP, nhưng theo hai triết lý hoàn toàn khác nhau: Java là ngôn ngữ hướng Class, trong khi JavaScript là ngôn ngữ hướng Prototype. Hiểu rõ sự khác biệt này là chìa khóa để viết code OOP hiệu quả trong cả hai môi trường.">
+<meta name="keywords" content="blog,developer,personal">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Lập Trình Hướng Đối Tượng: Class Thật (Java) và Prototype (JavaScript)">
+  <meta name="twitter:description" content="🧠 Giới thiệuLink to headingLập trình hướng đối tượng (OOP) là trụ cột của phát triển phần mềm hiện đại. Cả Java và JavaScript đều hỗ trợ OOP, nhưng theo hai triết lý hoàn toàn khác nhau: Java là ngôn ngữ hướng Class, trong khi JavaScript là ngôn ngữ hướng Prototype. Hiểu rõ sự khác biệt này là chìa khóa để viết code OOP hiệu quả trong cả hai môi trường.">
+
+<meta property="og:url" content="https://nien31102004.github.io/duynien/posts/bai3/">
+  <meta property="og:site_name" content="TimoBlog">
+  <meta property="og:title" content="Lập Trình Hướng Đối Tượng: Class Thật (Java) và Prototype (JavaScript)">
+  <meta property="og:description" content="🧠 Giới thiệuLink to headingLập trình hướng đối tượng (OOP) là trụ cột của phát triển phần mềm hiện đại. Cả Java và JavaScript đều hỗ trợ OOP, nhưng theo hai triết lý hoàn toàn khác nhau: Java là ngôn ngữ hướng Class, trong khi JavaScript là ngôn ngữ hướng Prototype. Hiểu rõ sự khác biệt này là chìa khóa để viết code OOP hiệu quả trong cả hai môi trường.">
+  <meta property="og:locale" content="vi">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-10-12T10:00:00+07:00">
+    <meta property="article:modified_time" content="2025-10-12T10:00:00+07:00">
+    <meta property="article:tag" content="Java">
+    <meta property="article:tag" content="JavaScript">
+    <meta property="article:tag" content="OOP">
+    <meta property="article:tag" content="Cơ Bản">
+
+
+
+
+<link rel="canonical" href="https://nien31102004.github.io/duynien/posts/bai3/">
+
+
+<link rel="preload" href="https://nien31102004.github.io/duynien/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://nien31102004.github.io/duynien/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://nien31102004.github.io/duynien/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="https://nien31102004.github.io/duynien/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="https://nien31102004.github.io/duynien/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+  
+    
+    <link rel="stylesheet" href="https://nien31102004.github.io/duynien/css/custom.min.b992c2f412798c1a6c6c493a45b1980f5b62c297330a0d403ec4b89c672b0cb7.css" integrity="sha256-uZLC9BJ5jBpsbEk6RbGYD1tiwpczCg1APsS4nGcrDLc=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="https://nien31102004.github.io/duynien/img/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="https://nien31102004.github.io/duynien/img/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="https://nien31102004.github.io/duynien/img/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="https://nien31102004.github.io/duynien/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://nien31102004.github.io/duynien/images/apple-touch-icon.png">
+
+<link rel="manifest" href="https://nien31102004.github.io/duynien/site.webmanifest">
+<link rel="mask-icon" href="https://nien31102004.github.io/duynien/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://nien31102004.github.io/duynien/">
+      TimoBlog
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="https://nien31102004.github.io/duynien/gioi_thieu/">Giới thiệu</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="https://nien31102004.github.io/duynien/posts/">Bài viết</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="https://nien31102004.github.io/duynien/lien_he/">Liên hệ</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://nien31102004.github.io/duynien/posts/bai3/">
+              Lập Trình Hướng Đối Tượng: Class Thật (Java) và Prototype (JavaScript)
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-10-12T10:00:00&#43;07:00">
+                tháng 10 12, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              
+            </span>
+          </div>
+          
+          
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/java/">Java</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/javascript/">JavaScript</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/oop/">OOP</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/c%C6%A1-b%E1%BA%A3n/">Cơ Bản</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="-giới-thiệu">
+  🧠 Giới thiệu
+  <a class="heading-link" href="#-gi%e1%bb%9bi-thi%e1%bb%87u">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Lập trình hướng đối tượng (OOP) là trụ cột của phát triển phần mềm hiện đại. Cả Java và JavaScript đều hỗ trợ OOP, nhưng theo hai triết lý hoàn toàn khác nhau: <strong>Java là ngôn ngữ hướng Class</strong>, trong khi <strong>JavaScript là ngôn ngữ hướng Prototype</strong>. Hiểu rõ sự khác biệt này là chìa khóa để viết code OOP hiệu quả trong cả hai môi trường.</p>
+<h2 id="-phần-1-oop-thuần-túy-trong-java-class-based">
+  ⚙️ Phần 1: OOP Thuần Túy trong Java (Class-Based)
+  <a class="heading-link" href="#-ph%e1%ba%a7n-1-oop-thu%e1%ba%a7n-t%c3%bay-trong-java-class-based">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Java là một ngôn ngữ OOP cổ điển. Mọi thứ trong Java (trừ các kiểu nguyên thủy) đều xoay quanh <strong>Class</strong> (Lớp).</p>
+<h3 id="class-và-kế-thừa">
+  <strong>Class và Kế thừa</strong>
+  <a class="heading-link" href="#class-v%c3%a0-k%e1%ba%bf-th%e1%bb%aba">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li><strong>Class</strong> là bản thiết kế để tạo ra các <strong>Object</strong> (Đối tượng).</li>
+<li><strong>Kế thừa</strong> được thực hiện bằng từ khóa <code>extends</code> và <code>implements</code>.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Java: Class là bản thiết kế</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Animal</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">eat</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Animal is eating...&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Kế thừa Class</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Dog</span> <span style="color:#66d9ef">extends</span> Animal {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">bark</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Woof!&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Khởi tạo Object</span>
+</span></span><span style="display:flex;"><span>Dog myDog <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Dog();
+</span></span><span style="display:flex;"><span>myDog.<span style="color:#a6e22e">eat</span>(); <span style="color:#75715e">// Output: Animal is eating...</span>
+</span></span></code></pre></div><p>Tóm lại: Java tạo ra các Object từ các Class. OOP của Java dựa trên cấu trúc phân cấp (Inheritance Hierarchy).</p>
+<hr>
+<h2 id="-phần-2-oop-dựa-trên-prototype-trong-javascript">
+  🧩 Phần 2: OOP Dựa trên Prototype trong JavaScript
+  <a class="heading-link" href="#-ph%e1%ba%a7n-2-oop-d%e1%bb%b1a-tr%c3%aan-prototype-trong-javascript">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Trước ES6 (2015), JavaScript không có từ khóa <code>class</code>. Nó dùng Prototype Chain (Chuỗi Prototype) để thực hiện kế thừa và chia sẻ thuộc tính/phương thức. Mọi Object trong JavaScript đều có một prototype (một Object khác) mà nó có thể kế thừa thuộc tính/phương thức.</p>
+<p>Khi bạn truy cập một thuộc tính của Object, nếu Object đó không có, JavaScript sẽ tìm kiếm tiếp trên prototype của nó — cứ thế tạo thành một chuỗi.</p>
+<h3 id="ví-dụ-tạo-đối-tượng-và-kế-thừa-qua-prototype">
+  Ví dụ: tạo đối tượng và kế thừa qua prototype
+  <a class="heading-link" href="#v%c3%ad-d%e1%bb%a5-t%e1%ba%a1o-%c4%91%e1%bb%91i-t%c6%b0%e1%bb%a3ng-v%c3%a0-k%e1%ba%bf-th%e1%bb%aba-qua-prototype">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// JavaScript: Object kế thừa trực tiếp từ Object khác
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">animal</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">eat</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Animal is eating...&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Object &#39;dog&#39; được tạo ra và kế thừa từ &#39;animal&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dog</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">animal</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dog</span>.<span style="color:#a6e22e">bark</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Woof!&#34;</span>);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dog</span>.<span style="color:#a6e22e">eat</span>(); <span style="color:#75715e">// Output: Animal is eating...
+</span></span></span></code></pre></div><h3 id="class-giả-lập-sugar-syntax-trong-es6">
+  Class &ldquo;Giả lập&rdquo; (sugar syntax) trong ES6
+  <a class="heading-link" href="#class-gi%e1%ba%a3-l%e1%ba%adp-sugar-syntax-trong-es6">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>ES6 thêm cú pháp <code>class</code> nhưng về bản chất vẫn dùng prototype chain bên dưới.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// JavaScript ES6: Dùng cú pháp Class (thực chất vẫn là Prototype)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Animal</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">eat</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Animal is eating...&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Dog</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Animal</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">bark</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Woof!&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">myDog</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Dog</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myDog</span>.<span style="color:#a6e22e">eat</span>(); <span style="color:#75715e">// Vẫn chạy, vì Dog kế thừa Animal qua Prototype Chain
+</span></span></span></code></pre></div><hr>
+<h2 id="kết-luận-tóm-tắt-so-sánh">
+  Kết luận (Tóm tắt so sánh)
+  <a class="heading-link" href="#k%e1%ba%bft-lu%e1%ba%adn-t%c3%b3m-t%e1%ba%aft-so-s%c3%a1nh">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Đặc điểm</th>
+          <th>Java (Class-based)</th>
+          <th>JavaScript (Prototype-based)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Khởi tạo</td>
+          <td>Từ Class (new MyClass())</td>
+          <td>Từ Object khác (Object.create()) hoặc Class ES6</td>
+      </tr>
+      <tr>
+          <td>Kế thừa</td>
+          <td>extends (kế thừa theo lớp)</td>
+          <td>Prototype chain (kế thừa theo prototype)</td>
+      </tr>
+      <tr>
+          <td>Lợi thế</td>
+          <td>Cấu trúc chặt chẽ, dễ quản lý, phù hợp dự án lớn</td>
+          <td>Linh hoạt, phù hợp với mô hình dữ liệu động và nhanh phát triển</td>
+      </tr>
+  </tbody>
+</table>
+<p>Nếu muốn viết code JS theo phong cách &ldquo;chuẩn Java&rdquo;, hãy dùng cú pháp <code>class</code>/<code>extends</code> của ES6 — nhưng đừng quên rằng bên dưới vẫn là cơ chế prototype hoạt động.</p>
+<p>📘 Tham khảo:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain"  class="external-link" target="_blank" rel="noopener">MDN: Inheritance and the prototype chain</a></li>
+<li><a href="https://docs.oracle.com/javase/tutorial/java/javaOO/classes.html"  class="external-link" target="_blank" rel="noopener">Java Tutorials: Classes and Objects (Oracle)</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2023 -
+    
+    2025
+     Nguyễn Duy Niên 
+    ·
+    
+     <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="https://nien31102004.github.io/duynien/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

@@ -1,38 +1,440 @@
-<!doctype html><html lang=vi><head><title>Java vs JavaScript – Cùng tên nhưng khác biệt một trời một vực! · TimoBlog</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta name=author content="Nguyễn Duy Niên"><meta name=description content="
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <title>
+  Java vs JavaScript – Cùng tên nhưng khác biệt một trời một vực! · TimoBlog
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Nguyễn Duy Niên">
+<meta name="description" content="
   🧠 Giới thiệu
   
     
     Link to heading
   
 
-Đây là nhầm lẫn kinh điển nhất mà bất kỳ người mới nào khi bước chân vào lập trình cũng gặp phải: Java và JavaScript có phải là một hay có liên quan mật thiết không? Câu trả lời thẳng thắn là: Không. Sự tương đồng lớn nhất giữa chúng chỉ là cái tên, được đặt vì mục đích marketing ở thời kỳ đầu. Bài viết này sẽ giúp bạn phân biệt rõ ràng hai &ldquo;người anh em&rdquo; này."><meta name=keywords content="blog,developer,personal"><meta name=twitter:card content="summary"><meta name=twitter:title content="Java vs JavaScript – Cùng tên nhưng khác biệt một trời một vực!"><meta name=twitter:description content="🧠 Giới thiệuLink to headingĐây là nhầm lẫn kinh điển nhất mà bất kỳ người mới nào khi bước chân vào lập trình cũng gặp phải: Java và JavaScript có phải là một hay có liên quan mật thiết không? Câu trả lời thẳng thắn là: Không. Sự tương đồng lớn nhất giữa chúng chỉ là cái tên, được đặt vì mục đích marketing ở thời kỳ đầu. Bài viết này sẽ giúp bạn phân biệt rõ ràng hai “người anh em” này."><meta property="og:url" content="https://nien31102004.github.io/duynien/posts/bai1/"><meta property="og:site_name" content="TimoBlog"><meta property="og:title" content="Java vs JavaScript – Cùng tên nhưng khác biệt một trời một vực!"><meta property="og:description" content="🧠 Giới thiệuLink to headingĐây là nhầm lẫn kinh điển nhất mà bất kỳ người mới nào khi bước chân vào lập trình cũng gặp phải: Java và JavaScript có phải là một hay có liên quan mật thiết không? Câu trả lời thẳng thắn là: Không. Sự tương đồng lớn nhất giữa chúng chỉ là cái tên, được đặt vì mục đích marketing ở thời kỳ đầu. Bài viết này sẽ giúp bạn phân biệt rõ ràng hai “người anh em” này."><meta property="og:locale" content="vi"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-10-10T08:00:00+07:00"><meta property="article:modified_time" content="2025-10-10T08:00:00+07:00"><meta property="article:tag" content="Java"><meta property="article:tag" content="JavaScript"><meta property="article:tag" content="So Sánh"><meta property="article:tag" content="Cơ Bản"><link rel=canonical href=https://nien31102004.github.io/duynien/posts/bai1/><link rel=preload href=https://nien31102004.github.io/duynien/fonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=https://nien31102004.github.io/duynien/fonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=https://nien31102004.github.io/duynien/fonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin><link rel=stylesheet href=https://nien31102004.github.io/duynien/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin=anonymous media=screen><link rel=stylesheet href=https://nien31102004.github.io/duynien/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=https://nien31102004.github.io/duynien/img/favicon.svg sizes=any><link rel=icon type=image/png href=https://nien31102004.github.io/duynien/img/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=https://nien31102004.github.io/duynien/img/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=https://nien31102004.github.io/duynien/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=https://nien31102004.github.io/duynien/images/apple-touch-icon.png><link rel=manifest href=https://nien31102004.github.io/duynien/site.webmanifest><link rel=mask-icon href=https://nien31102004.github.io/duynien/images/safari-pinned-tab.svg color=#5bbad5></head><body class="preload-transitions colorscheme-auto"><div class=float-container><a id=dark-mode-toggle class=colorscheme-toggle><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></a></div><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=https://nien31102004.github.io/duynien/>TimoBlog
-</a><input type=checkbox id=menu-toggle>
-<label class="menu-button float-right" for=menu-toggle><i class="fa-solid fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=https://nien31102004.github.io/duynien/gioi_thieu/>Giới thiệu</a></li><li class=navigation-item><a class=navigation-link href=https://nien31102004.github.io/duynien/posts/>Bài viết</a></li><li class=navigation-item><a class=navigation-link href=https://nien31102004.github.io/duynien/lien_he/>Liên hệ</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title><a class=title-link href=https://nien31102004.github.io/duynien/posts/bai1/>Java vs JavaScript – Cùng tên nhưng khác biệt một trời một vực!</a></h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fa-solid fa-calendar" aria-hidden=true></i>
-<time datetime=2025-10-10T08:00:00+07:00>tháng 10 10, 2025
-</time></span><span class=reading-time><i class="fa-solid fa-clock" aria-hidden=true></i></span></div><div class=tags><i class="fa-solid fa-tag" aria-hidden=true></i>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/java/>Java</a>
-</span><span class=separator>•</span>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/javascript/>JavaScript</a>
-</span><span class=separator>•</span>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/so-s%C3%A1nh/>So Sánh</a>
-</span><span class=separator>•</span>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/c%C6%A1-b%E1%BA%A3n/>Cơ Bản</a></span></div></div></header><div class=post-content><h2 id=-giới-thiệu>🧠 Giới thiệu
-<a class=heading-link href=#-gi%e1%bb%9bi-thi%e1%bb%87u><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Đây là nhầm lẫn kinh điển nhất mà bất kỳ người mới nào khi bước chân vào lập trình cũng gặp phải: <strong>Java</strong> và <strong>JavaScript</strong> có phải là một hay có liên quan mật thiết không? Câu trả lời thẳng thắn là: <strong>Không</strong>. Sự tương đồng lớn nhất giữa chúng chỉ là cái tên, được đặt vì mục đích marketing ở thời kỳ đầu. Bài viết này sẽ giúp bạn phân biệt rõ ràng hai &ldquo;người anh em&rdquo; này.</p><h2 id=-nguồn-gốc-và-mục-tiêu-thiết-kế>📜 Nguồn Gốc và Mục Tiêu Thiết Kế
-<a class=heading-link href=#-ngu%e1%bb%93n-g%e1%bb%91c-v%c3%a0-m%e1%bb%a5c-ti%c3%aau-thi%e1%ba%bft-k%e1%ba%bf><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><table><thead><tr><th style=text-align:left>Đặc điểm</th><th style=text-align:left>Java</th><th style=text-align:left>JavaScript</th></tr></thead><tbody><tr><td style=text-align:left><strong>Ra mắt</strong></td><td style=text-align:left>1995 (Bởi Sun Microsystems)</td><td style=text-align:left>1995 (Bởi Netscape Communications)</td></tr><tr><td style=text-align:left><strong>Mục tiêu</strong></td><td style=text-align:left>Xây dựng ứng dụng doanh nghiệp (Backend), ứng dụng di động (Android), phần mềm Desktop.</td><td style=text-align:left>Xây dựng trang web động (Frontend), sau này mở rộng ra Backend (Node.js) và ứng dụng di động (React Native).</td></tr><tr><td style=text-align:left><strong>Triết lý</strong></td><td style=text-align:left>&ldquo;Write Once, Run Anywhere&rdquo; (Viết một lần, chạy mọi nơi).</td><td style=text-align:left>Ngôn ngữ kịch bản (Scripting Language) chạy trong trình duyệt.</td></tr></tbody></table><h2 id=-so-sánh-cơ-chế-hoạt-động>⚙️ So Sánh Cơ Chế Hoạt Động
-<a class=heading-link href=#-so-s%c3%a1nh-c%c6%a1-ch%e1%ba%bf-ho%e1%ba%a1t-%c4%91%e1%bb%99ng><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Sự khác biệt cốt lõi nằm ở cách code của bạn được chạy (Runtime Environment).</p><h3 id=phần-1-cơ-chế-biên-dịch-và-chạy><strong>Phần 1: Cơ chế Biên dịch và Chạy</strong>
-<a class=heading-link href=#ph%e1%ba%a7n-1-c%c6%a1-ch%e1%ba%bf-bi%c3%aan-d%e1%bb%8bch-v%c3%a0-ch%e1%ba%a1y><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><ul><li><p><strong>Java (Ngôn ngữ Biên dịch - Compiled):</strong> Code được biên dịch thành <strong>Bytecode</strong> (tệp <code>.class</code>), sau đó được chạy trên <strong>JVM (Java Virtual Machine)</strong>. JVM là một máy ảo, giúp Java độc lập với hệ điều hành.</p></li><li><p><strong>JavaScript (Ngôn ngữ Thông dịch/JIT - Interpreted/Just-in-Time Compiled):</strong> Code được chạy trực tiếp bởi <strong>JavaScript Engine</strong> (ví dụ: V8 trong Chrome/Node.js). Quá trình này diễn ra từng dòng, hoặc được biên dịch ngay lúc chạy (JIT) để tối ưu hiệu suất.</p></li></ul><h3 id=phần-2-cú-pháp-và-hệ-thống-kiểu><strong>Phần 2: Cú Pháp và Hệ Thống Kiểu</strong>
-<a class=heading-link href=#ph%e1%ba%a7n-2-c%c3%ba-ph%c3%a1p-v%c3%a0-h%e1%bb%87-th%e1%bb%91ng-ki%e1%bb%83u><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>Java là ngôn ngữ <strong>kiểu tĩnh (Statically Typed)</strong>, trong khi JavaScript là <strong>kiểu động (Dynamically Typed)</strong>.</p><table><thead><tr><th style=text-align:left>Đặc điểm</th><th style=text-align:left>Java</th><th style=text-align:left>JavaScript</th></tr></thead><tbody><tr><td style=text-align:left><strong>Kiểu Dữ liệu</strong></td><td style=text-align:left>Bắt buộc phải khai báo (e.g., <code>String name;</code>, <code>int age;</code>). Kiểm tra lỗi kiểu dữ liệu ngay khi biên dịch.</td><td style=text-align:left>Không cần khai báo kiểu (e.g., <code>let name;</code>, <code>const age;</code>). Kiểm tra lỗi kiểu dữ liệu khi chạy.</td></tr><tr><td style=text-align:left><strong>Code mẫu</strong></td><td style=text-align:left><code>String s = "Hello";</code></td><td style=text-align:left><code>let s = "Hello";</code></td></tr><tr><td style=text-align:left><strong>Đánh dấu OOP</strong></td><td style=text-align:left>Ngôn ngữ Lập trình Hướng đối tượng <strong>thuần túy</strong> (Class-based).</td><td style=text-align:left>Ngôn ngữ Hướng đối tượng dựa trên <strong>Prototype</strong>.</td></tr></tbody></table><h2 id=-ứng-dụng-thực-tế>💡 Ứng Dụng Thực Tế
-<a class=heading-link href=#-%e1%bb%a9ng-d%e1%bb%a5ng-th%e1%bb%b1c-t%e1%ba%bf><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><table><thead><tr><th style=text-align:left>Ứng dụng</th><th style=text-align:left>Java</th><th style=text-align:left>JavaScript</th></tr></thead><tbody><tr><td style=text-align:left><strong>Backend/Server</strong></td><td style=text-align:left>Spring Boot, Jakarta EE (cực kỳ phổ biến trong doanh nghiệp lớn).</td><td style=text-align:left>Node.js, Express.js.</td></tr><tr><td style=text-align:left><strong>Frontend/Web</strong></td><td style=text-align:left>Không phổ biến (trừ một số framework như GWT, Vaadin).</td><td style=text-align:left>React, Vue, Angular (ngôn ngữ bắt buộc).</td></tr><tr><td style=text-align:left><strong>Mobile</strong></td><td style=text-align:left>Android Native Development.</td><td style=text-align:left>React Native, Flutter (Dùng Dart, nhưng là đối thủ).</td></tr><tr><td style=text-align:left><strong>Desktop</strong></td><td style=text-align:left>JavaFX, Swing.</td><td style=text-align:left>Electron (Dùng HTML/CSS/JS).</td></tr></tbody></table><h2 id=-kết-luận>🧩 Kết luận
-<a class=heading-link href=#-k%e1%ba%bft-lu%e1%ba%adn><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p><strong>Java</strong> là lựa chọn an toàn, mạnh mẽ, và có cấu trúc chặt chẽ cho các hệ thống phức tạp, cần hiệu suất cao và ổn định (ứng dụng doanh nghiệp, Android). <strong>JavaScript</strong> là ngôn ngữ linh hoạt, nhanh nhẹn, thống trị hoàn toàn mảng Web Frontend và cực kỳ phổ biến ở mảng Backend (Node.js).</p><p>Tóm lại: <strong>Học cả hai là tốt nhất</strong> nếu bạn muốn trở thành một Full-stack Developer hiện đại.</p><p>📘 <strong>Tham khảo:</strong></p><ul><li><a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript class=external-link target=_blank rel=noopener>MDN Web Docs về JavaScript</a></li><li><a href=https://docs.oracle.com/en/java/ class=external-link target=_blank rel=noopener>Oracle Java Documentation</a></li></ul></div><footer></footer></article></section></div><footer class=footer><section class=container>©
-2023 -
-2025
-Nguyễn Duy Niên
-·
-<a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> & <a href=https://github.com/luizdepra/hugo-coder/ target=_blank rel=noopener>Coder</a>.</section></footer></main><script src=https://nien31102004.github.io/duynien/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script></body></html>
+Đây là nhầm lẫn kinh điển nhất mà bất kỳ người mới nào khi bước chân vào lập trình cũng gặp phải: Java và JavaScript có phải là một hay có liên quan mật thiết không? Câu trả lời thẳng thắn là: Không. Sự tương đồng lớn nhất giữa chúng chỉ là cái tên, được đặt vì mục đích marketing ở thời kỳ đầu. Bài viết này sẽ giúp bạn phân biệt rõ ràng hai &ldquo;người anh em&rdquo; này.">
+<meta name="keywords" content="blog,developer,personal">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Java vs JavaScript – Cùng tên nhưng khác biệt một trời một vực!">
+  <meta name="twitter:description" content="🧠 Giới thiệuLink to headingĐây là nhầm lẫn kinh điển nhất mà bất kỳ người mới nào khi bước chân vào lập trình cũng gặp phải: Java và JavaScript có phải là một hay có liên quan mật thiết không? Câu trả lời thẳng thắn là: Không. Sự tương đồng lớn nhất giữa chúng chỉ là cái tên, được đặt vì mục đích marketing ở thời kỳ đầu. Bài viết này sẽ giúp bạn phân biệt rõ ràng hai “người anh em” này.">
+
+<meta property="og:url" content="https://nien31102004.github.io/duynien/posts/bai1/">
+  <meta property="og:site_name" content="TimoBlog">
+  <meta property="og:title" content="Java vs JavaScript – Cùng tên nhưng khác biệt một trời một vực!">
+  <meta property="og:description" content="🧠 Giới thiệuLink to headingĐây là nhầm lẫn kinh điển nhất mà bất kỳ người mới nào khi bước chân vào lập trình cũng gặp phải: Java và JavaScript có phải là một hay có liên quan mật thiết không? Câu trả lời thẳng thắn là: Không. Sự tương đồng lớn nhất giữa chúng chỉ là cái tên, được đặt vì mục đích marketing ở thời kỳ đầu. Bài viết này sẽ giúp bạn phân biệt rõ ràng hai “người anh em” này.">
+  <meta property="og:locale" content="vi">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-10-10T08:00:00+07:00">
+    <meta property="article:modified_time" content="2025-10-10T08:00:00+07:00">
+    <meta property="article:tag" content="Java">
+    <meta property="article:tag" content="JavaScript">
+    <meta property="article:tag" content="So Sánh">
+    <meta property="article:tag" content="Cơ Bản">
+
+
+
+
+<link rel="canonical" href="https://nien31102004.github.io/duynien/posts/bai1/">
+
+
+<link rel="preload" href="https://nien31102004.github.io/duynien/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://nien31102004.github.io/duynien/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://nien31102004.github.io/duynien/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="https://nien31102004.github.io/duynien/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="https://nien31102004.github.io/duynien/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+  
+    
+    <link rel="stylesheet" href="https://nien31102004.github.io/duynien/css/custom.min.b992c2f412798c1a6c6c493a45b1980f5b62c297330a0d403ec4b89c672b0cb7.css" integrity="sha256-uZLC9BJ5jBpsbEk6RbGYD1tiwpczCg1APsS4nGcrDLc=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="https://nien31102004.github.io/duynien/img/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="https://nien31102004.github.io/duynien/img/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="https://nien31102004.github.io/duynien/img/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="https://nien31102004.github.io/duynien/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://nien31102004.github.io/duynien/images/apple-touch-icon.png">
+
+<link rel="manifest" href="https://nien31102004.github.io/duynien/site.webmanifest">
+<link rel="mask-icon" href="https://nien31102004.github.io/duynien/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://nien31102004.github.io/duynien/">
+      TimoBlog
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="https://nien31102004.github.io/duynien/gioi_thieu/">Giới thiệu</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="https://nien31102004.github.io/duynien/posts/">Bài viết</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="https://nien31102004.github.io/duynien/lien_he/">Liên hệ</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://nien31102004.github.io/duynien/posts/bai1/">
+              Java vs JavaScript – Cùng tên nhưng khác biệt một trời một vực!
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-10-10T08:00:00&#43;07:00">
+                tháng 10 10, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              
+            </span>
+          </div>
+          
+          
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/java/">Java</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/javascript/">JavaScript</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/so-s%C3%A1nh/">So Sánh</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/c%C6%A1-b%E1%BA%A3n/">Cơ Bản</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="-giới-thiệu">
+  🧠 Giới thiệu
+  <a class="heading-link" href="#-gi%e1%bb%9bi-thi%e1%bb%87u">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Đây là nhầm lẫn kinh điển nhất mà bất kỳ người mới nào khi bước chân vào lập trình cũng gặp phải: <strong>Java</strong> và <strong>JavaScript</strong> có phải là một hay có liên quan mật thiết không? Câu trả lời thẳng thắn là: <strong>Không</strong>. Sự tương đồng lớn nhất giữa chúng chỉ là cái tên, được đặt vì mục đích marketing ở thời kỳ đầu. Bài viết này sẽ giúp bạn phân biệt rõ ràng hai &ldquo;người anh em&rdquo; này.</p>
+<h2 id="-nguồn-gốc-và-mục-tiêu-thiết-kế">
+  📜 Nguồn Gốc và Mục Tiêu Thiết Kế
+  <a class="heading-link" href="#-ngu%e1%bb%93n-g%e1%bb%91c-v%c3%a0-m%e1%bb%a5c-ti%c3%aau-thi%e1%ba%bft-k%e1%ba%bf">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Đặc điểm</th>
+          <th style="text-align: left">Java</th>
+          <th style="text-align: left">JavaScript</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Ra mắt</strong></td>
+          <td style="text-align: left">1995 (Bởi Sun Microsystems)</td>
+          <td style="text-align: left">1995 (Bởi Netscape Communications)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Mục tiêu</strong></td>
+          <td style="text-align: left">Xây dựng ứng dụng doanh nghiệp (Backend), ứng dụng di động (Android), phần mềm Desktop.</td>
+          <td style="text-align: left">Xây dựng trang web động (Frontend), sau này mở rộng ra Backend (Node.js) và ứng dụng di động (React Native).</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Triết lý</strong></td>
+          <td style="text-align: left">&ldquo;Write Once, Run Anywhere&rdquo; (Viết một lần, chạy mọi nơi).</td>
+          <td style="text-align: left">Ngôn ngữ kịch bản (Scripting Language) chạy trong trình duyệt.</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="-so-sánh-cơ-chế-hoạt-động">
+  ⚙️ So Sánh Cơ Chế Hoạt Động
+  <a class="heading-link" href="#-so-s%c3%a1nh-c%c6%a1-ch%e1%ba%bf-ho%e1%ba%a1t-%c4%91%e1%bb%99ng">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Sự khác biệt cốt lõi nằm ở cách code của bạn được chạy (Runtime Environment).</p>
+<h3 id="phần-1-cơ-chế-biên-dịch-và-chạy">
+  <strong>Phần 1: Cơ chế Biên dịch và Chạy</strong>
+  <a class="heading-link" href="#ph%e1%ba%a7n-1-c%c6%a1-ch%e1%ba%bf-bi%c3%aan-d%e1%bb%8bch-v%c3%a0-ch%e1%ba%a1y">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li>
+<p><strong>Java (Ngôn ngữ Biên dịch - Compiled):</strong> Code được biên dịch thành <strong>Bytecode</strong> (tệp <code>.class</code>), sau đó được chạy trên <strong>JVM (Java Virtual Machine)</strong>. JVM là một máy ảo, giúp Java độc lập với hệ điều hành.</p>
+</li>
+<li>
+<p><strong>JavaScript (Ngôn ngữ Thông dịch/JIT - Interpreted/Just-in-Time Compiled):</strong> Code được chạy trực tiếp bởi <strong>JavaScript Engine</strong> (ví dụ: V8 trong Chrome/Node.js). Quá trình này diễn ra từng dòng, hoặc được biên dịch ngay lúc chạy (JIT) để tối ưu hiệu suất.</p>
+</li>
+</ul>
+<h3 id="phần-2-cú-pháp-và-hệ-thống-kiểu">
+  <strong>Phần 2: Cú Pháp và Hệ Thống Kiểu</strong>
+  <a class="heading-link" href="#ph%e1%ba%a7n-2-c%c3%ba-ph%c3%a1p-v%c3%a0-h%e1%bb%87-th%e1%bb%91ng-ki%e1%bb%83u">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Java là ngôn ngữ <strong>kiểu tĩnh (Statically Typed)</strong>, trong khi JavaScript là <strong>kiểu động (Dynamically Typed)</strong>.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Đặc điểm</th>
+          <th style="text-align: left">Java</th>
+          <th style="text-align: left">JavaScript</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Kiểu Dữ liệu</strong></td>
+          <td style="text-align: left">Bắt buộc phải khai báo (e.g., <code>String name;</code>, <code>int age;</code>). Kiểm tra lỗi kiểu dữ liệu ngay khi biên dịch.</td>
+          <td style="text-align: left">Không cần khai báo kiểu (e.g., <code>let name;</code>, <code>const age;</code>). Kiểm tra lỗi kiểu dữ liệu khi chạy.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Code mẫu</strong></td>
+          <td style="text-align: left"><code>String s = &quot;Hello&quot;;</code></td>
+          <td style="text-align: left"><code>let s = &quot;Hello&quot;;</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Đánh dấu OOP</strong></td>
+          <td style="text-align: left">Ngôn ngữ Lập trình Hướng đối tượng <strong>thuần túy</strong> (Class-based).</td>
+          <td style="text-align: left">Ngôn ngữ Hướng đối tượng dựa trên <strong>Prototype</strong>.</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="-ứng-dụng-thực-tế">
+  💡 Ứng Dụng Thực Tế
+  <a class="heading-link" href="#-%e1%bb%a9ng-d%e1%bb%a5ng-th%e1%bb%b1c-t%e1%ba%bf">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Ứng dụng</th>
+          <th style="text-align: left">Java</th>
+          <th style="text-align: left">JavaScript</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Backend/Server</strong></td>
+          <td style="text-align: left">Spring Boot, Jakarta EE (cực kỳ phổ biến trong doanh nghiệp lớn).</td>
+          <td style="text-align: left">Node.js, Express.js.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Frontend/Web</strong></td>
+          <td style="text-align: left">Không phổ biến (trừ một số framework như GWT, Vaadin).</td>
+          <td style="text-align: left">React, Vue, Angular (ngôn ngữ bắt buộc).</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Mobile</strong></td>
+          <td style="text-align: left">Android Native Development.</td>
+          <td style="text-align: left">React Native, Flutter (Dùng Dart, nhưng là đối thủ).</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Desktop</strong></td>
+          <td style="text-align: left">JavaFX, Swing.</td>
+          <td style="text-align: left">Electron (Dùng HTML/CSS/JS).</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="-kết-luận">
+  🧩 Kết luận
+  <a class="heading-link" href="#-k%e1%ba%bft-lu%e1%ba%adn">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p><strong>Java</strong> là lựa chọn an toàn, mạnh mẽ, và có cấu trúc chặt chẽ cho các hệ thống phức tạp, cần hiệu suất cao và ổn định (ứng dụng doanh nghiệp, Android). <strong>JavaScript</strong> là ngôn ngữ linh hoạt, nhanh nhẹn, thống trị hoàn toàn mảng Web Frontend và cực kỳ phổ biến ở mảng Backend (Node.js).</p>
+<p>Tóm lại: <strong>Học cả hai là tốt nhất</strong> nếu bạn muốn trở thành một Full-stack Developer hiện đại.</p>
+<p>📘 <strong>Tham khảo:</strong></p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"  class="external-link" target="_blank" rel="noopener">MDN Web Docs về JavaScript</a></li>
+<li><a href="https://docs.oracle.com/en/java/"  class="external-link" target="_blank" rel="noopener">Oracle Java Documentation</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2023 -
+    
+    2025
+     Nguyễn Duy Niên 
+    ·
+    
+     <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="https://nien31102004.github.io/duynien/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

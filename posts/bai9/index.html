@@ -1,4 +1,19 @@
-<!doctype html><html lang=vi><head><title>Tối Ưu Hiệu Năng: Mẹo Vặt Giúp Java Chạy Nhanh và JavaScript Không Bị Đơ · TimoBlog</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta name=author content="Nguyễn Duy Niên"><meta name=description content="
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <title>
+  Tối Ưu Hiệu Năng: Mẹo Vặt Giúp Java Chạy Nhanh và JavaScript Không Bị Đơ · TimoBlog
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Nguyễn Duy Niên">
+<meta name="description" content="
   🧠 Giới thiệu
   
     
@@ -13,51 +28,410 @@ Tối ưu hiệu năng không chỉ là làm cho code chạy nhanh hơn, mà cò
     Link to heading
   
 
-Việc tối ưu Java thường tập trung vào quản lý bộ nhớ (Heap Memory), tối thiểu hóa việc tạo Object không cần thiết, và tận dụng đa luồng (Threading) hiệu quả."><meta name=keywords content="blog,developer,personal"><meta name=twitter:card content="summary"><meta name=twitter:title content="Tối Ưu Hiệu Năng: Mẹo Vặt Giúp Java Chạy Nhanh và JavaScript Không Bị Đơ"><meta name=twitter:description content="🧠 Giới thiệuLink to headingTối ưu hiệu năng không chỉ là làm cho code chạy nhanh hơn, mà còn là sử dụng tài nguyên (CPU, bộ nhớ) một cách hiệu quả. Do có kiến trúc rất khác nhau (Java là JVM, JavaScript là Event Loop), chiến lược tối ưu cho mỗi ngôn ngữ cũng khác biệt.
-⚙️ Phần 1: Tối ưu hiệu năng trong JavaLink to headingViệc tối ưu Java thường tập trung vào quản lý bộ nhớ (Heap Memory), tối thiểu hóa việc tạo Object không cần thiết, và tận dụng đa luồng (Threading) hiệu quả."><meta property="og:url" content="https://nien31102004.github.io/duynien/posts/bai9/"><meta property="og:site_name" content="TimoBlog"><meta property="og:title" content="Tối Ưu Hiệu Năng: Mẹo Vặt Giúp Java Chạy Nhanh và JavaScript Không Bị Đơ"><meta property="og:description" content="🧠 Giới thiệuLink to headingTối ưu hiệu năng không chỉ là làm cho code chạy nhanh hơn, mà còn là sử dụng tài nguyên (CPU, bộ nhớ) một cách hiệu quả. Do có kiến trúc rất khác nhau (Java là JVM, JavaScript là Event Loop), chiến lược tối ưu cho mỗi ngôn ngữ cũng khác biệt.
-⚙️ Phần 1: Tối ưu hiệu năng trong JavaLink to headingViệc tối ưu Java thường tập trung vào quản lý bộ nhớ (Heap Memory), tối thiểu hóa việc tạo Object không cần thiết, và tận dụng đa luồng (Threading) hiệu quả."><meta property="og:locale" content="vi"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-10-18T16:00:00+07:00"><meta property="article:modified_time" content="2025-10-18T16:00:00+07:00"><meta property="article:tag" content="Java"><meta property="article:tag" content="JavaScript"><meta property="article:tag" content="Performance"><meta property="article:tag" content="Nâng Cao"><meta property="article:tag" content="Mẹo"><link rel=canonical href=https://nien31102004.github.io/duynien/posts/bai9/><link rel=preload href=https://nien31102004.github.io/duynien/fonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=https://nien31102004.github.io/duynien/fonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=https://nien31102004.github.io/duynien/fonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin><link rel=stylesheet href=https://nien31102004.github.io/duynien/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin=anonymous media=screen><link rel=stylesheet href=https://nien31102004.github.io/duynien/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=https://nien31102004.github.io/duynien/img/favicon.svg sizes=any><link rel=icon type=image/png href=https://nien31102004.github.io/duynien/img/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=https://nien31102004.github.io/duynien/img/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=https://nien31102004.github.io/duynien/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=https://nien31102004.github.io/duynien/images/apple-touch-icon.png><link rel=manifest href=https://nien31102004.github.io/duynien/site.webmanifest><link rel=mask-icon href=https://nien31102004.github.io/duynien/images/safari-pinned-tab.svg color=#5bbad5></head><body class="preload-transitions colorscheme-auto"><div class=float-container><a id=dark-mode-toggle class=colorscheme-toggle><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></a></div><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=https://nien31102004.github.io/duynien/>TimoBlog
-</a><input type=checkbox id=menu-toggle>
-<label class="menu-button float-right" for=menu-toggle><i class="fa-solid fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=https://nien31102004.github.io/duynien/gioi_thieu/>Giới thiệu</a></li><li class=navigation-item><a class=navigation-link href=https://nien31102004.github.io/duynien/posts/>Bài viết</a></li><li class=navigation-item><a class=navigation-link href=https://nien31102004.github.io/duynien/lien_he/>Liên hệ</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title><a class=title-link href=https://nien31102004.github.io/duynien/posts/bai9/>Tối Ưu Hiệu Năng: Mẹo Vặt Giúp Java Chạy Nhanh và JavaScript Không Bị Đơ</a></h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fa-solid fa-calendar" aria-hidden=true></i>
-<time datetime=2025-10-18T16:00:00+07:00>tháng 10 18, 2025
-</time></span><span class=reading-time><i class="fa-solid fa-clock" aria-hidden=true></i></span></div><div class=tags><i class="fa-solid fa-tag" aria-hidden=true></i>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/java/>Java</a>
-</span><span class=separator>•</span>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/javascript/>JavaScript</a>
-</span><span class=separator>•</span>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/performance/>Performance</a>
-</span><span class=separator>•</span>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/n%C3%A2ng-cao/>Nâng Cao</a>
-</span><span class=separator>•</span>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/m%E1%BA%B9o/>Mẹo</a></span></div></div></header><div class=post-content><h2 id=-giới-thiệu>🧠 Giới thiệu
-<a class=heading-link href=#-gi%e1%bb%9bi-thi%e1%bb%87u><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Tối ưu hiệu năng không chỉ là làm cho code chạy nhanh hơn, mà còn là sử dụng tài nguyên (CPU, bộ nhớ) một cách hiệu quả. Do có kiến trúc rất khác nhau (Java là JVM, JavaScript là Event Loop), chiến lược tối ưu cho mỗi ngôn ngữ cũng khác biệt.</p><h2 id=-phần-1-tối-ưu-hiệu-năng-trong-java>⚙️ Phần 1: Tối ưu hiệu năng trong Java
-<a class=heading-link href=#-ph%e1%ba%a7n-1-t%e1%bb%91i-%c6%b0u-hi%e1%bb%87u-n%c4%83ng-trong-java><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Việc tối ưu Java thường tập trung vào quản lý bộ nhớ (Heap Memory), tối thiểu hóa việc tạo Object không cần thiết, và tận dụng đa luồng (Threading) hiệu quả.</p><h3 id=mẹo-1-hạn-chế-tạo-object-string-object><strong>Mẹo 1: Hạn chế tạo Object (String, Object)</strong>
-<a class=heading-link href=#m%e1%ba%b9o-1-h%e1%ba%a1n-ch%e1%ba%bf-t%e1%ba%a1o-object-string-object><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>Việc tạo quá nhiều Object mới và không dùng nữa sẽ tạo gánh nặng cho <strong>Garbage Collector (GC)</strong> của JVM, làm giảm hiệu suất.</p><ul><li><p><strong>Dùng <code>StringBuilder</code> thay vì nối String bằng <code>+</code></strong> trong vòng lặp:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#75715e>// NÊN: Chỉ tạo 1 Object StringBuilder</span>
-</span></span><span style=display:flex><span>StringBuilder sb <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> StringBuilder();
-</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0; i <span style=color:#f92672>&lt;</span> 1000; i<span style=color:#f92672>++</span>) {
-</span></span><span style=display:flex><span>    sb.<span style=color:#a6e22e>append</span>(i); 
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span><span style=color:#75715e>// NÊN TRÁNH: Mỗi lần nối (+) sẽ tạo ra một Object String mới</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>// String s = &#34;&#34;; for (...) s = s + i; </span>
-</span></span></code></pre></div></li></ul><h3 id=mẹo-2-tận-dụng-stream-api-một-cách-hợp-lý><strong>Mẹo 2: Tận dụng Stream API một cách hợp lý</strong>
-<a class=heading-link href=#m%e1%ba%b9o-2-t%e1%ba%adn-d%e1%bb%a5ng-stream-api-m%e1%bb%99t-c%c3%a1ch-h%e1%bb%a3p-l%c3%bd><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p><code>Stream API</code> giúp code Java hiện đại và dễ đọc, nhưng nếu lạm dụng, nó có thể chậm hơn vòng lặp truyền thống.</p><ul><li><strong>Dùng <code>parallelStream()</code> khi cần:</strong> Nếu việc xử lý dữ liệu phức tạp và tốn CPU, dùng <code>parallelStream()</code> để tận dụng đa nhân CPU. Tuy nhiên, chỉ dùng khi kích thước Collection đủ lớn.</li></ul><h3 id=mẹo-3-tối-ưu-bộ-nhớ-với-collections><strong>Mẹo 3: Tối ưu bộ nhớ với Collections</strong>
-<a class=heading-link href=#m%e1%ba%b9o-3-t%e1%bb%91i-%c6%b0u-b%e1%bb%99-nh%e1%bb%9b-v%e1%bb%9bi-collections><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><ul><li><strong>Chọn đúng Collection:</strong> Ví dụ, dùng <code>ArrayList</code> khi cần truy cập ngẫu nhiên, <code>LinkedList</code> khi cần thêm/xóa ở đầu/cuối nhanh.</li></ul><h2 id=-phần-2-tối-ưu-hiệu-năng-trong-javascript>💡 Phần 2: Tối ưu hiệu năng trong JavaScript
-<a class=heading-link href=#-ph%e1%ba%a7n-2-t%e1%bb%91i-%c6%b0u-hi%e1%bb%87u-n%c4%83ng-trong-javascript><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Việc tối ưu JavaScript thường tập trung vào việc đảm bảo <strong>Event Loop không bị block</strong> và giảm thiểu thao tác với <strong>DOM (Document Object Model)</strong>.</p><h3 id=mẹo-1-tránh-thao-tác-dom-trực-tiếp-và-quá-nhiều-lần><strong>Mẹo 1: Tránh thao tác DOM trực tiếp và quá nhiều lần</strong>
-<a class=heading-link href=#m%e1%ba%b9o-1-tr%c3%a1nh-thao-t%c3%a1c-dom-tr%e1%bb%b1c-ti%e1%ba%bfp-v%c3%a0-qu%c3%a1-nhi%e1%bb%81u-l%e1%ba%a7n><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>Thao tác DOM (thay đổi HTML, CSS) là tác vụ tốn kém nhất trong trình duyệt.</p><ul><li><strong>Tạo Fragment (Document Fragment):</strong> Thay vì thêm từng phần tử vào DOM trong một vòng lặp, hãy thêm chúng vào một Document Fragment trước, sau đó chỉ thêm Fragment đó vào DOM một lần duy nhất. (Nếu dùng React/Vue/Angular thì Framework đã xử lý tối ưu này).</li></ul><h3 id=mẹo-2-debounce-và-throttle-cho-các-sự-kiện-liên-tục><strong>Mẹo 2: Debounce và Throttle cho các sự kiện liên tục</strong>
-<a class=heading-link href=#m%e1%ba%b9o-2-debounce-v%c3%a0-throttle-cho-c%c3%a1c-s%e1%bb%b1-ki%e1%bb%87n-li%c3%aan-t%e1%bb%a5c><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>Khi xử lý các sự kiện diễn ra liên tục như <strong><code>resize</code></strong> (thay đổi kích thước cửa sổ) hoặc <strong><code>scroll</code></strong> (cuộn chuột), bạn cần giới hạn tần suất hàm được gọi.</p><ul><li><strong>Debounce:</strong> Chỉ gọi hàm sau khi một khoảng thời gian chờ (timeout) đã trôi qua và không có sự kiện nào xảy ra thêm (ví dụ: tìm kiếm tự động, chỉ gọi API khi người dùng ngừng gõ).</li><li><strong>Throttle:</strong> Đảm bảo hàm chỉ được gọi tối đa X lần trong một khoảng thời gian nhất định (ví dụ: cập nhật vị trí cuộn).</li></ul><h3 id=mẹo-3-tận-dụng-khả-năng-bất-đồng-bộ><strong>Mẹo 3: Tận dụng khả năng Bất đồng bộ</strong>
-<a class=heading-link href=#m%e1%ba%b9o-3-t%e1%ba%adn-d%e1%bb%a5ng-kh%e1%ba%a3-n%c4%83ng-b%e1%ba%a5t-%c4%91%e1%bb%93ng-b%e1%bb%99><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><ul><li><strong>Chia nhỏ tác vụ phức tạp:</strong> Nếu có một vòng lặp tính toán quá lâu, hãy dùng <code>setTimeout(..., 0)</code> hoặc chia nhỏ tính toán bằng Web Workers để tránh làm đơ UI.</li></ul><h2 id=-công-cụ-đo-lường-thực-tế>📝 Công cụ đo lường thực tế
-<a class=heading-link href=#-c%c3%b4ng-c%e1%bb%a5-%c4%91o-l%c6%b0%e1%bb%9dng-th%e1%bb%b1c-t%e1%ba%bf><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><table><thead><tr><th style=text-align:left>Ngôn ngữ</th><th style=text-align:left>Công cụ</th><th style=text-align:left>Mục đích</th></tr></thead><tbody><tr><td style=text-align:left><strong>Java</strong></td><td style=text-align:left>JProfiler, VisualVM</td><td style=text-align:left>Phân tích Memory Leak, kiểm tra việc sử dụng Thread và GC.</td></tr><tr><td style=text-align:left><strong>JavaScript</strong></td><td style=text-align:left>Chrome DevTools (Tab Performance/Memory)</td><td style=text-align:left>Ghi lại luồng sự kiện, phân tích thời gian Layout/Painting và phát hiện tắc nghẽn Event Loop.</td></tr></tbody></table><p>Việc tối ưu hiệu năng là một quá trình liên tục. Luôn đo lường trước khi tối ưu để đảm bảo những thay đổi của bạn thực sự tạo ra khác biệt.</p><p>📘 <strong>Tham khảo:</strong></p><ul><li><a href=https://www.oracle.com/java/technologies/javase/vm-performance.html class=external-link target=_blank rel=noopener>Java Performance Tuning Guide (Oracle)</a></li><li><a href=https://developer.mozilla.org/en-US/docs/Web/Performance/Optimizing_web_performance class=external-link target=_blank rel=noopener>MDN: Optimizing web performance</a></li></ul></div><footer></footer></article></section></div><footer class=footer><section class=container>©
-2023 -
-2025
-Nguyễn Duy Niên
-·
-<a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> & <a href=https://github.com/luizdepra/hugo-coder/ target=_blank rel=noopener>Coder</a>.</section></footer></main><script src=https://nien31102004.github.io/duynien/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script></body></html>
+Việc tối ưu Java thường tập trung vào quản lý bộ nhớ (Heap Memory), tối thiểu hóa việc tạo Object không cần thiết, và tận dụng đa luồng (Threading) hiệu quả.">
+<meta name="keywords" content="blog,developer,personal">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Tối Ưu Hiệu Năng: Mẹo Vặt Giúp Java Chạy Nhanh và JavaScript Không Bị Đơ">
+  <meta name="twitter:description" content="🧠 Giới thiệuLink to headingTối ưu hiệu năng không chỉ là làm cho code chạy nhanh hơn, mà còn là sử dụng tài nguyên (CPU, bộ nhớ) một cách hiệu quả. Do có kiến trúc rất khác nhau (Java là JVM, JavaScript là Event Loop), chiến lược tối ưu cho mỗi ngôn ngữ cũng khác biệt.
+⚙️ Phần 1: Tối ưu hiệu năng trong JavaLink to headingViệc tối ưu Java thường tập trung vào quản lý bộ nhớ (Heap Memory), tối thiểu hóa việc tạo Object không cần thiết, và tận dụng đa luồng (Threading) hiệu quả.">
+
+<meta property="og:url" content="https://nien31102004.github.io/duynien/posts/bai9/">
+  <meta property="og:site_name" content="TimoBlog">
+  <meta property="og:title" content="Tối Ưu Hiệu Năng: Mẹo Vặt Giúp Java Chạy Nhanh và JavaScript Không Bị Đơ">
+  <meta property="og:description" content="🧠 Giới thiệuLink to headingTối ưu hiệu năng không chỉ là làm cho code chạy nhanh hơn, mà còn là sử dụng tài nguyên (CPU, bộ nhớ) một cách hiệu quả. Do có kiến trúc rất khác nhau (Java là JVM, JavaScript là Event Loop), chiến lược tối ưu cho mỗi ngôn ngữ cũng khác biệt.
+⚙️ Phần 1: Tối ưu hiệu năng trong JavaLink to headingViệc tối ưu Java thường tập trung vào quản lý bộ nhớ (Heap Memory), tối thiểu hóa việc tạo Object không cần thiết, và tận dụng đa luồng (Threading) hiệu quả.">
+  <meta property="og:locale" content="vi">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-10-18T16:00:00+07:00">
+    <meta property="article:modified_time" content="2025-10-18T16:00:00+07:00">
+    <meta property="article:tag" content="Java">
+    <meta property="article:tag" content="JavaScript">
+    <meta property="article:tag" content="Performance">
+    <meta property="article:tag" content="Nâng Cao">
+    <meta property="article:tag" content="Mẹo">
+
+
+
+
+<link rel="canonical" href="https://nien31102004.github.io/duynien/posts/bai9/">
+
+
+<link rel="preload" href="https://nien31102004.github.io/duynien/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://nien31102004.github.io/duynien/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://nien31102004.github.io/duynien/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="https://nien31102004.github.io/duynien/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="https://nien31102004.github.io/duynien/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+  
+    
+    <link rel="stylesheet" href="https://nien31102004.github.io/duynien/css/custom.min.b992c2f412798c1a6c6c493a45b1980f5b62c297330a0d403ec4b89c672b0cb7.css" integrity="sha256-uZLC9BJ5jBpsbEk6RbGYD1tiwpczCg1APsS4nGcrDLc=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="https://nien31102004.github.io/duynien/img/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="https://nien31102004.github.io/duynien/img/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="https://nien31102004.github.io/duynien/img/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="https://nien31102004.github.io/duynien/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://nien31102004.github.io/duynien/images/apple-touch-icon.png">
+
+<link rel="manifest" href="https://nien31102004.github.io/duynien/site.webmanifest">
+<link rel="mask-icon" href="https://nien31102004.github.io/duynien/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://nien31102004.github.io/duynien/">
+      TimoBlog
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="https://nien31102004.github.io/duynien/gioi_thieu/">Giới thiệu</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="https://nien31102004.github.io/duynien/posts/">Bài viết</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="https://nien31102004.github.io/duynien/lien_he/">Liên hệ</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://nien31102004.github.io/duynien/posts/bai9/">
+              Tối Ưu Hiệu Năng: Mẹo Vặt Giúp Java Chạy Nhanh và JavaScript Không Bị Đơ
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-10-18T16:00:00&#43;07:00">
+                tháng 10 18, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              
+            </span>
+          </div>
+          
+          
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/java/">Java</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/javascript/">JavaScript</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/performance/">Performance</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/n%C3%A2ng-cao/">Nâng Cao</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/m%E1%BA%B9o/">Mẹo</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="-giới-thiệu">
+  🧠 Giới thiệu
+  <a class="heading-link" href="#-gi%e1%bb%9bi-thi%e1%bb%87u">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Tối ưu hiệu năng không chỉ là làm cho code chạy nhanh hơn, mà còn là sử dụng tài nguyên (CPU, bộ nhớ) một cách hiệu quả. Do có kiến trúc rất khác nhau (Java là JVM, JavaScript là Event Loop), chiến lược tối ưu cho mỗi ngôn ngữ cũng khác biệt.</p>
+<h2 id="-phần-1-tối-ưu-hiệu-năng-trong-java">
+  ⚙️ Phần 1: Tối ưu hiệu năng trong Java
+  <a class="heading-link" href="#-ph%e1%ba%a7n-1-t%e1%bb%91i-%c6%b0u-hi%e1%bb%87u-n%c4%83ng-trong-java">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Việc tối ưu Java thường tập trung vào quản lý bộ nhớ (Heap Memory), tối thiểu hóa việc tạo Object không cần thiết, và tận dụng đa luồng (Threading) hiệu quả.</p>
+<h3 id="mẹo-1-hạn-chế-tạo-object-string-object">
+  <strong>Mẹo 1: Hạn chế tạo Object (String, Object)</strong>
+  <a class="heading-link" href="#m%e1%ba%b9o-1-h%e1%ba%a1n-ch%e1%ba%bf-t%e1%ba%a1o-object-string-object">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Việc tạo quá nhiều Object mới và không dùng nữa sẽ tạo gánh nặng cho <strong>Garbage Collector (GC)</strong> của JVM, làm giảm hiệu suất.</p>
+<ul>
+<li>
+<p><strong>Dùng <code>StringBuilder</code> thay vì nối String bằng <code>+</code></strong> trong vòng lặp:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// NÊN: Chỉ tạo 1 Object StringBuilder</span>
+</span></span><span style="display:flex;"><span>StringBuilder sb <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> StringBuilder();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> 1000; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    sb.<span style="color:#a6e22e">append</span>(i); 
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// NÊN TRÁNH: Mỗi lần nối (+) sẽ tạo ra một Object String mới</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// String s = &#34;&#34;; for (...) s = s + i; </span>
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="mẹo-2-tận-dụng-stream-api-một-cách-hợp-lý">
+  <strong>Mẹo 2: Tận dụng Stream API một cách hợp lý</strong>
+  <a class="heading-link" href="#m%e1%ba%b9o-2-t%e1%ba%adn-d%e1%bb%a5ng-stream-api-m%e1%bb%99t-c%c3%a1ch-h%e1%bb%a3p-l%c3%bd">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p><code>Stream API</code> giúp code Java hiện đại và dễ đọc, nhưng nếu lạm dụng, nó có thể chậm hơn vòng lặp truyền thống.</p>
+<ul>
+<li><strong>Dùng <code>parallelStream()</code> khi cần:</strong> Nếu việc xử lý dữ liệu phức tạp và tốn CPU, dùng <code>parallelStream()</code> để tận dụng đa nhân CPU. Tuy nhiên, chỉ dùng khi kích thước Collection đủ lớn.</li>
+</ul>
+<h3 id="mẹo-3-tối-ưu-bộ-nhớ-với-collections">
+  <strong>Mẹo 3: Tối ưu bộ nhớ với Collections</strong>
+  <a class="heading-link" href="#m%e1%ba%b9o-3-t%e1%bb%91i-%c6%b0u-b%e1%bb%99-nh%e1%bb%9b-v%e1%bb%9bi-collections">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li><strong>Chọn đúng Collection:</strong> Ví dụ, dùng <code>ArrayList</code> khi cần truy cập ngẫu nhiên, <code>LinkedList</code> khi cần thêm/xóa ở đầu/cuối nhanh.</li>
+</ul>
+<h2 id="-phần-2-tối-ưu-hiệu-năng-trong-javascript">
+  💡 Phần 2: Tối ưu hiệu năng trong JavaScript
+  <a class="heading-link" href="#-ph%e1%ba%a7n-2-t%e1%bb%91i-%c6%b0u-hi%e1%bb%87u-n%c4%83ng-trong-javascript">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Việc tối ưu JavaScript thường tập trung vào việc đảm bảo <strong>Event Loop không bị block</strong> và giảm thiểu thao tác với <strong>DOM (Document Object Model)</strong>.</p>
+<h3 id="mẹo-1-tránh-thao-tác-dom-trực-tiếp-và-quá-nhiều-lần">
+  <strong>Mẹo 1: Tránh thao tác DOM trực tiếp và quá nhiều lần</strong>
+  <a class="heading-link" href="#m%e1%ba%b9o-1-tr%c3%a1nh-thao-t%c3%a1c-dom-tr%e1%bb%b1c-ti%e1%ba%bfp-v%c3%a0-qu%c3%a1-nhi%e1%bb%81u-l%e1%ba%a7n">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Thao tác DOM (thay đổi HTML, CSS) là tác vụ tốn kém nhất trong trình duyệt.</p>
+<ul>
+<li><strong>Tạo Fragment (Document Fragment):</strong> Thay vì thêm từng phần tử vào DOM trong một vòng lặp, hãy thêm chúng vào một Document Fragment trước, sau đó chỉ thêm Fragment đó vào DOM một lần duy nhất. (Nếu dùng React/Vue/Angular thì Framework đã xử lý tối ưu này).</li>
+</ul>
+<h3 id="mẹo-2-debounce-và-throttle-cho-các-sự-kiện-liên-tục">
+  <strong>Mẹo 2: Debounce và Throttle cho các sự kiện liên tục</strong>
+  <a class="heading-link" href="#m%e1%ba%b9o-2-debounce-v%c3%a0-throttle-cho-c%c3%a1c-s%e1%bb%b1-ki%e1%bb%87n-li%c3%aan-t%e1%bb%a5c">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Khi xử lý các sự kiện diễn ra liên tục như <strong><code>resize</code></strong> (thay đổi kích thước cửa sổ) hoặc <strong><code>scroll</code></strong> (cuộn chuột), bạn cần giới hạn tần suất hàm được gọi.</p>
+<ul>
+<li><strong>Debounce:</strong> Chỉ gọi hàm sau khi một khoảng thời gian chờ (timeout) đã trôi qua và không có sự kiện nào xảy ra thêm (ví dụ: tìm kiếm tự động, chỉ gọi API khi người dùng ngừng gõ).</li>
+<li><strong>Throttle:</strong> Đảm bảo hàm chỉ được gọi tối đa X lần trong một khoảng thời gian nhất định (ví dụ: cập nhật vị trí cuộn).</li>
+</ul>
+<h3 id="mẹo-3-tận-dụng-khả-năng-bất-đồng-bộ">
+  <strong>Mẹo 3: Tận dụng khả năng Bất đồng bộ</strong>
+  <a class="heading-link" href="#m%e1%ba%b9o-3-t%e1%ba%adn-d%e1%bb%a5ng-kh%e1%ba%a3-n%c4%83ng-b%e1%ba%a5t-%c4%91%e1%bb%93ng-b%e1%bb%99">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ul>
+<li><strong>Chia nhỏ tác vụ phức tạp:</strong> Nếu có một vòng lặp tính toán quá lâu, hãy dùng <code>setTimeout(..., 0)</code> hoặc chia nhỏ tính toán bằng Web Workers để tránh làm đơ UI.</li>
+</ul>
+<h2 id="-công-cụ-đo-lường-thực-tế">
+  📝 Công cụ đo lường thực tế
+  <a class="heading-link" href="#-c%c3%b4ng-c%e1%bb%a5-%c4%91o-l%c6%b0%e1%bb%9dng-th%e1%bb%b1c-t%e1%ba%bf">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Ngôn ngữ</th>
+          <th style="text-align: left">Công cụ</th>
+          <th style="text-align: left">Mục đích</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Java</strong></td>
+          <td style="text-align: left">JProfiler, VisualVM</td>
+          <td style="text-align: left">Phân tích Memory Leak, kiểm tra việc sử dụng Thread và GC.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>JavaScript</strong></td>
+          <td style="text-align: left">Chrome DevTools (Tab Performance/Memory)</td>
+          <td style="text-align: left">Ghi lại luồng sự kiện, phân tích thời gian Layout/Painting và phát hiện tắc nghẽn Event Loop.</td>
+      </tr>
+  </tbody>
+</table>
+<p>Việc tối ưu hiệu năng là một quá trình liên tục. Luôn đo lường trước khi tối ưu để đảm bảo những thay đổi của bạn thực sự tạo ra khác biệt.</p>
+<p>📘 <strong>Tham khảo:</strong></p>
+<ul>
+<li><a href="https://www.oracle.com/java/technologies/javase/vm-performance.html"  class="external-link" target="_blank" rel="noopener">Java Performance Tuning Guide (Oracle)</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Performance/Optimizing_web_performance"  class="external-link" target="_blank" rel="noopener">MDN: Optimizing web performance</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2023 -
+    
+    2025
+     Nguyễn Duy Niên 
+    ·
+    
+     <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="https://nien31102004.github.io/duynien/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

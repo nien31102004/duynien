@@ -1,17 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Deploy on TimoBlog</title><link>https://nien31102004.github.io/duynien/tags/deploy/</link><description>Recent content in Deploy on TimoBlog</description><generator>Hugo</generator><language>vi</language><lastBuildDate>Fri, 17 Oct 2025 15:00:00 +0700</lastBuildDate><atom:link href="https://nien31102004.github.io/duynien/tags/deploy/index.xml" rel="self" type="application/rss+xml"/><item><title>Full-Stack Hoàn Chỉnh: Kết Hợp Sức Mạnh Java Backend (Spring Boot) và React Frontend</title><link>https://nien31102004.github.io/duynien/posts/bai8/</link><pubDate>Fri, 17 Oct 2025 15:00:00 +0700</pubDate><guid>https://nien31102004.github.io/duynien/posts/bai8/</guid><description>&lt;h2 id="-giới-thiệu"&gt;
- 🧠 Giới thiệu
- &lt;a class="heading-link" href="#-gi%e1%bb%9bi-thi%e1%bb%87u"&gt;
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
- &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
- &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Đây là hướng dẫn tổng hợp để kết nối một backend Java (Spring Boot) với frontend React: thiết kế API, xử lý CORS, gọi API từ React và các phương án triển khai (separate vs embed). Mục tiêu: bạn có thể xây dựng, chạy và triển khai một ứng dụng full‑stack hoàn chỉnh.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id="-phần-1-spring-boot--api-backend--cors"&gt;
- ⚙️ Phần 1: Spring Boot — API Backend &amp;amp; CORS
- &lt;a class="heading-link" href="#-ph%e1%ba%a7n-1-spring-boot--api-backend--cors"&gt;
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
- &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
- &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Backend cung cấp REST API trả JSON. Nếu frontend chạy trên cổng khác (ví dụ React: 3000), cần cấu hình CORS.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Deploy on TimoBlog</title>
+    <link>https://nien31102004.github.io/duynien/tags/deploy/</link>
+    <description>Recent content in Deploy on TimoBlog</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <lastBuildDate>Fri, 17 Oct 2025 15:00:00 +0700</lastBuildDate>
+    <atom:link href="https://nien31102004.github.io/duynien/tags/deploy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Full-Stack Hoàn Chỉnh: Kết Hợp Sức Mạnh Java Backend (Spring Boot) và React Frontend</title>
+      <link>https://nien31102004.github.io/duynien/posts/bai8/</link>
+      <pubDate>Fri, 17 Oct 2025 15:00:00 +0700</pubDate>
+      <guid>https://nien31102004.github.io/duynien/posts/bai8/</guid>
+      <description>&lt;h2 id=&#34;-giới-thiệu&#34;&gt;&#xD;&#xA;  🧠 Giới thiệu&#xD;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#-gi%e1%bb%9bi-thi%e1%bb%87u&#34;&gt;&#xD;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xD;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xD;&#xA;  &lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;Đây là hướng dẫn tổng hợp để kết nối một backend Java (Spring Boot) với frontend React: thiết kế API, xử lý CORS, gọi API từ React và các phương án triển khai (separate vs embed). Mục tiêu: bạn có thể xây dựng, chạy và triển khai một ứng dụng full‑stack hoàn chỉnh.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-phần-1-spring-boot--api-backend--cors&#34;&gt;&#xD;&#xA;  ⚙️ Phần 1: Spring Boot — API Backend &amp;amp; CORS&#xD;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#-ph%e1%ba%a7n-1-spring-boot--api-backend--cors&#34;&gt;&#xD;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xD;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xD;&#xA;  &lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;Backend cung cấp REST API trả JSON. Nếu frontend chạy trên cổng khác (ví dụ React: 3000), cần cấu hình CORS.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

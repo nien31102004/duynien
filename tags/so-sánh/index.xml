@@ -1,8 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>So Sánh on TimoBlog</title><link>https://nien31102004.github.io/duynien/tags/so-s%C3%A1nh/</link><description>Recent content in So Sánh on TimoBlog</description><generator>Hugo</generator><language>vi</language><lastBuildDate>Fri, 10 Oct 2025 08:00:00 +0700</lastBuildDate><atom:link href="https://nien31102004.github.io/duynien/tags/so-s%C3%A1nh/index.xml" rel="self" type="application/rss+xml"/><item><title>Java vs JavaScript – Cùng tên nhưng khác biệt một trời một vực!</title><link>https://nien31102004.github.io/duynien/posts/bai1/</link><pubDate>Fri, 10 Oct 2025 08:00:00 +0700</pubDate><guid>https://nien31102004.github.io/duynien/posts/bai1/</guid><description>&lt;h2 id="-giới-thiệu"&gt;
- 🧠 Giới thiệu
- &lt;a class="heading-link" href="#-gi%e1%bb%9bi-thi%e1%bb%87u"&gt;
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
- &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
- &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Đây là nhầm lẫn kinh điển nhất mà bất kỳ người mới nào khi bước chân vào lập trình cũng gặp phải: &lt;strong&gt;Java&lt;/strong&gt; và &lt;strong&gt;JavaScript&lt;/strong&gt; có phải là một hay có liên quan mật thiết không? Câu trả lời thẳng thắn là: &lt;strong&gt;Không&lt;/strong&gt;. Sự tương đồng lớn nhất giữa chúng chỉ là cái tên, được đặt vì mục đích marketing ở thời kỳ đầu. Bài viết này sẽ giúp bạn phân biệt rõ ràng hai &amp;ldquo;người anh em&amp;rdquo; này.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>So Sánh on TimoBlog</title>
+    <link>https://nien31102004.github.io/duynien/tags/so-s%C3%A1nh/</link>
+    <description>Recent content in So Sánh on TimoBlog</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <lastBuildDate>Fri, 10 Oct 2025 08:00:00 +0700</lastBuildDate>
+    <atom:link href="https://nien31102004.github.io/duynien/tags/so-s%C3%A1nh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java vs JavaScript – Cùng tên nhưng khác biệt một trời một vực!</title>
+      <link>https://nien31102004.github.io/duynien/posts/bai1/</link>
+      <pubDate>Fri, 10 Oct 2025 08:00:00 +0700</pubDate>
+      <guid>https://nien31102004.github.io/duynien/posts/bai1/</guid>
+      <description>&lt;h2 id=&#34;-giới-thiệu&#34;&gt;&#xD;&#xA;  🧠 Giới thiệu&#xD;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#-gi%e1%bb%9bi-thi%e1%bb%87u&#34;&gt;&#xD;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xD;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xD;&#xA;  &lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;Đây là nhầm lẫn kinh điển nhất mà bất kỳ người mới nào khi bước chân vào lập trình cũng gặp phải: &lt;strong&gt;Java&lt;/strong&gt; và &lt;strong&gt;JavaScript&lt;/strong&gt; có phải là một hay có liên quan mật thiết không? Câu trả lời thẳng thắn là: &lt;strong&gt;Không&lt;/strong&gt;. Sự tương đồng lớn nhất giữa chúng chỉ là cái tên, được đặt vì mục đích marketing ở thời kỳ đầu. Bài viết này sẽ giúp bạn phân biệt rõ ràng hai &amp;ldquo;người anh em&amp;rdquo; này.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

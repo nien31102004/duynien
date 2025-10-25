@@ -1,4 +1,19 @@
-<!doctype html><html lang=vi><head><title>REST API Siêu Gọn: Spring Boot (Java) vs Express.js (Node.js) · TimoBlog</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta name=author content="Nguyễn Duy Niên"><meta name=description content="
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <title>
+  REST API Siêu Gọn: Spring Boot (Java) vs Express.js (Node.js) · TimoBlog
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Nguyễn Duy Niên">
+<meta name="description" content="
   🧠 Giới thiệu
   
     
@@ -13,82 +28,407 @@ Xây dựng REST API là kỹ năng Backend cốt lõi. Trong thế giới Java,
     Link to heading
   
 
-Spring Boot được thiết kế để tạo ra các ứng dụng độc lập (standalone) với cấu hình tối thiểu."><meta name=keywords content="blog,developer,personal"><meta name=twitter:card content="summary"><meta name=twitter:title content="REST API Siêu Gọn: Spring Boot (Java) vs Express.js (Node.js)"><meta name=twitter:description content="🧠 Giới thiệuLink to headingXây dựng REST API là kỹ năng Backend cốt lõi. Trong thế giới Java, Spring Boot là vua. Trong thế giới JavaScript, Node.js cùng framework Express.js là lựa chọn phổ biến nhất. Bài viết này sẽ so sánh cách bạn tạo một API đơn giản trả về JSON trong cả hai nền tảng.
-⚙️ Phần 1: Java Backend với Spring BootLink to headingSpring Boot được thiết kế để tạo ra các ứng dụng độc lập (standalone) với cấu hình tối thiểu."><meta property="og:url" content="https://nien31102004.github.io/duynien/posts/bai4/"><meta property="og:site_name" content="TimoBlog"><meta property="og:title" content="REST API Siêu Gọn: Spring Boot (Java) vs Express.js (Node.js)"><meta property="og:description" content="🧠 Giới thiệuLink to headingXây dựng REST API là kỹ năng Backend cốt lõi. Trong thế giới Java, Spring Boot là vua. Trong thế giới JavaScript, Node.js cùng framework Express.js là lựa chọn phổ biến nhất. Bài viết này sẽ so sánh cách bạn tạo một API đơn giản trả về JSON trong cả hai nền tảng.
-⚙️ Phần 1: Java Backend với Spring BootLink to headingSpring Boot được thiết kế để tạo ra các ứng dụng độc lập (standalone) với cấu hình tối thiểu."><meta property="og:locale" content="vi"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-10-13T11:00:00+07:00"><meta property="article:modified_time" content="2025-10-13T11:00:00+07:00"><meta property="article:tag" content="Java"><meta property="article:tag" content="JavaScript"><meta property="article:tag" content="Spring Boot"><meta property="article:tag" content="Node.js"><meta property="article:tag" content="API"><link rel=canonical href=https://nien31102004.github.io/duynien/posts/bai4/><link rel=preload href=https://nien31102004.github.io/duynien/fonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=https://nien31102004.github.io/duynien/fonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=https://nien31102004.github.io/duynien/fonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin><link rel=stylesheet href=https://nien31102004.github.io/duynien/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin=anonymous media=screen><link rel=stylesheet href=https://nien31102004.github.io/duynien/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=https://nien31102004.github.io/duynien/img/favicon.svg sizes=any><link rel=icon type=image/png href=https://nien31102004.github.io/duynien/img/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=https://nien31102004.github.io/duynien/img/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=https://nien31102004.github.io/duynien/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=https://nien31102004.github.io/duynien/images/apple-touch-icon.png><link rel=manifest href=https://nien31102004.github.io/duynien/site.webmanifest><link rel=mask-icon href=https://nien31102004.github.io/duynien/images/safari-pinned-tab.svg color=#5bbad5></head><body class="preload-transitions colorscheme-auto"><div class=float-container><a id=dark-mode-toggle class=colorscheme-toggle><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></a></div><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=https://nien31102004.github.io/duynien/>TimoBlog
-</a><input type=checkbox id=menu-toggle>
-<label class="menu-button float-right" for=menu-toggle><i class="fa-solid fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=https://nien31102004.github.io/duynien/gioi_thieu/>Giới thiệu</a></li><li class=navigation-item><a class=navigation-link href=https://nien31102004.github.io/duynien/posts/>Bài viết</a></li><li class=navigation-item><a class=navigation-link href=https://nien31102004.github.io/duynien/lien_he/>Liên hệ</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title><a class=title-link href=https://nien31102004.github.io/duynien/posts/bai4/>REST API Siêu Gọn: Spring Boot (Java) vs Express.js (Node.js)</a></h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fa-solid fa-calendar" aria-hidden=true></i>
-<time datetime=2025-10-13T11:00:00+07:00>tháng 10 13, 2025
-</time></span><span class=reading-time><i class="fa-solid fa-clock" aria-hidden=true></i></span></div><div class=tags><i class="fa-solid fa-tag" aria-hidden=true></i>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/java/>Java</a>
-</span><span class=separator>•</span>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/javascript/>JavaScript</a>
-</span><span class=separator>•</span>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/spring-boot/>Spring Boot</a>
-</span><span class=separator>•</span>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/node.js/>Node.js</a>
-</span><span class=separator>•</span>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/api/>API</a></span></div></div></header><div class=post-content><h2 id=-giới-thiệu>🧠 Giới thiệu
-<a class=heading-link href=#-gi%e1%bb%9bi-thi%e1%bb%87u><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Xây dựng <strong>REST API</strong> là kỹ năng Backend cốt lõi. Trong thế giới Java, <strong>Spring Boot</strong> là vua. Trong thế giới JavaScript, <strong>Node.js</strong> cùng framework <strong>Express.js</strong> là lựa chọn phổ biến nhất. Bài viết này sẽ so sánh cách bạn tạo một API đơn giản trả về JSON trong cả hai nền tảng.</p><h2 id=-phần-1-java-backend-với-spring-boot>⚙️ Phần 1: Java Backend với Spring Boot
-<a class=heading-link href=#-ph%e1%ba%a7n-1-java-backend-v%e1%bb%9bi-spring-boot><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Spring Boot được thiết kế để tạo ra các ứng dụng độc lập (standalone) với cấu hình tối thiểu.</p><h3 id=code-api-đơn-giản><strong>Code API đơn giản</strong>
-<a class=heading-link href=#code-api-%c4%91%c6%a1n-gi%e1%ba%a3n><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>Chúng ta chỉ cần một Class duy nhất với Annotation <code>@RestController</code> để định nghĩa endpoint.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#75715e>// File: SimpleController.java</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>import</span> org.springframework.web.bind.annotation.GetMapping;
-</span></span><span style=display:flex><span><span style=color:#f92672>import</span> org.springframework.web.bind.annotation.RestController;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#a6e22e>@RestController</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>SimpleController</span> {
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#75715e>// Định nghĩa endpoint GET tại đường dẫn /api/hello</span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@GetMapping</span>(<span style=color:#e6db74>&#34;/api/hello&#34;</span>)
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> HelloResponse <span style=color:#a6e22e>sayHello</span>() {
-</span></span><span style=display:flex><span>        <span style=color:#75715e>// Trả về một đối tượng, Spring Boot sẽ tự động chuyển thành JSON</span>
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> HelloResponse(<span style=color:#e6db74>&#34;Java&#34;</span>, <span style=color:#e6db74>&#34;Xin chào từ Spring Boot!&#34;</span>);
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>// Class mô hình dữ liệu (Java POJO)</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>HelloResponse</span> {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> String lang;
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> String message;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#75715e>// Constructor, Getters, Setters...</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>HelloResponse</span>(String lang, String message) {
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>lang</span> <span style=color:#f92672>=</span> lang;
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>message</span> <span style=color:#f92672>=</span> message;
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    <span style=color:#75715e>// ...</span>
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>Ưu điểm của Spring Boot:</p><ul><li>Cấu hình tối thiểu: Nhờ Auto-configuration.</li><li>Mạnh mẽ: Hỗ trợ Dependency Injection, Security, Database transactions&mldr;</li><li>Kiểu tĩnh: An toàn, dễ debug các lỗi liên quan đến kiểu dữ liệu.</li></ul><p>💡 Phần 2: JavaScript Backend với Node.js và Express</p><p>Node.js cho phép JavaScript chạy ngoài trình duyệt, và Express.js là framework tối giản để xử lý routing.</p><h3 id=code-api-đơn-giản-1><strong>Code API đơn giản</strong>
-<a class=heading-link href=#code-api-%c4%91%c6%a1n-gi%e1%ba%a3n-1><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>Bạn cần khởi tạo server và định nghĩa routing thủ công.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#75715e>// File: server.js
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>express</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;express&#39;</span>);
-</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>app</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>express</span>();
-</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>port</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>3000</span>;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>// Middleware để phân tích body JSON
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>use</span>(<span style=color:#a6e22e>express</span>.<span style=color:#a6e22e>json</span>()); 
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>// Định nghĩa endpoint GET tại đường dẫn /api/hello
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#39;/api/hello&#39;</span>, (<span style=color:#a6e22e>req</span>, <span style=color:#a6e22e>res</span>) =&gt; {
-</span></span><span style=display:flex><span>    <span style=color:#75715e>// Trả về Object JavaScript, Express tự động chuyển thành JSON
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>response</span> <span style=color:#f92672>=</span> {
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>lang</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;JavaScript&#34;</span>,
-</span></span><span style=display:flex><span>        <span style=color:#a6e22e>message</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;Xin chào từ Node.js &amp; Express!&#34;</span>
-</span></span><span style=display:flex><span>    };
-</span></span><span style=display:flex><span>    <span style=color:#75715e>// res.json() sẽ gửi JSON về client
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>json</span>(<span style=color:#a6e22e>response</span>); 
-</span></span><span style=display:flex><span>});
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>// Khởi động Server
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>listen</span>(<span style=color:#a6e22e>port</span>, () =&gt; {
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>`Server Node.js đang chạy ở cổng </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>port</span><span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>);
-</span></span><span style=display:flex><span>});
-</span></span></code></pre></div><p>Ưu điểm của Node.js/Express:</p><ul><li>Tốc độ triển khai: Cực nhanh, code ngắn gọn.</li><li>Bất đồng bộ: Hoàn hảo cho các tác vụ I/O (Database, Network).</li><li>Dùng chung ngôn ngữ: Lập trình viên Full-stack chỉ cần học 1 ngôn ngữ.</li></ul><p>🧩 Kết luận</p><table><thead><tr><th>Đặc điểm</th><th>Java (Spring Boot)</th><th>JavaScript (Node.js/Express)</th></tr></thead><tbody><tr><td>Tốc độ Dev</td><td>Khởi tạo ban đầu hơi lâu (tạo project), nhưng về sau ổn định.</td><td>Rất nhanh, cài đặt đơn giản (npm install express).</td></tr><tr><td>Môi trường</td><td>JVM.</td><td>JavaScript Engine (V8).</td></tr><tr><td>Kiểm soát</td><td>Rất chặt chẽ, an toàn cho các nghiệp vụ phức tạp.</td><td>Linh hoạt, phù hợp API đơn giản, microservices.</td></tr></tbody></table><p>Cả hai đều là lựa chọn tuyệt vời. Tùy vào quy mô dự án và kiến thức đội ngũ, bạn sẽ chọn nền tảng phù hợp.</p><p>📘 Tham khảo:</p><ul><li><a href=https://spring.io/projects/spring-boot class=external-link target=_blank rel=noopener>Spring Boot Official Site</a></li><li><a href=https://expressjs.com/en/guide/routing.html class=external-link target=_blank rel=noopener>Express.js Official Guide</a></li></ul></div><footer></footer></article></section></div><footer class=footer><section class=container>©
-2023 -
-2025
-Nguyễn Duy Niên
-·
-<a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> & <a href=https://github.com/luizdepra/hugo-coder/ target=_blank rel=noopener>Coder</a>.</section></footer></main><script src=https://nien31102004.github.io/duynien/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script></body></html>
+Spring Boot được thiết kế để tạo ra các ứng dụng độc lập (standalone) với cấu hình tối thiểu.">
+<meta name="keywords" content="blog,developer,personal">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="REST API Siêu Gọn: Spring Boot (Java) vs Express.js (Node.js)">
+  <meta name="twitter:description" content="🧠 Giới thiệuLink to headingXây dựng REST API là kỹ năng Backend cốt lõi. Trong thế giới Java, Spring Boot là vua. Trong thế giới JavaScript, Node.js cùng framework Express.js là lựa chọn phổ biến nhất. Bài viết này sẽ so sánh cách bạn tạo một API đơn giản trả về JSON trong cả hai nền tảng.
+⚙️ Phần 1: Java Backend với Spring BootLink to headingSpring Boot được thiết kế để tạo ra các ứng dụng độc lập (standalone) với cấu hình tối thiểu.">
+
+<meta property="og:url" content="https://nien31102004.github.io/duynien/posts/bai4/">
+  <meta property="og:site_name" content="TimoBlog">
+  <meta property="og:title" content="REST API Siêu Gọn: Spring Boot (Java) vs Express.js (Node.js)">
+  <meta property="og:description" content="🧠 Giới thiệuLink to headingXây dựng REST API là kỹ năng Backend cốt lõi. Trong thế giới Java, Spring Boot là vua. Trong thế giới JavaScript, Node.js cùng framework Express.js là lựa chọn phổ biến nhất. Bài viết này sẽ so sánh cách bạn tạo một API đơn giản trả về JSON trong cả hai nền tảng.
+⚙️ Phần 1: Java Backend với Spring BootLink to headingSpring Boot được thiết kế để tạo ra các ứng dụng độc lập (standalone) với cấu hình tối thiểu.">
+  <meta property="og:locale" content="vi">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-10-13T11:00:00+07:00">
+    <meta property="article:modified_time" content="2025-10-13T11:00:00+07:00">
+    <meta property="article:tag" content="Java">
+    <meta property="article:tag" content="JavaScript">
+    <meta property="article:tag" content="Spring Boot">
+    <meta property="article:tag" content="Node.js">
+    <meta property="article:tag" content="API">
+
+
+
+
+<link rel="canonical" href="https://nien31102004.github.io/duynien/posts/bai4/">
+
+
+<link rel="preload" href="https://nien31102004.github.io/duynien/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://nien31102004.github.io/duynien/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://nien31102004.github.io/duynien/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="https://nien31102004.github.io/duynien/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="https://nien31102004.github.io/duynien/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+  
+    
+    <link rel="stylesheet" href="https://nien31102004.github.io/duynien/css/custom.min.b992c2f412798c1a6c6c493a45b1980f5b62c297330a0d403ec4b89c672b0cb7.css" integrity="sha256-uZLC9BJ5jBpsbEk6RbGYD1tiwpczCg1APsS4nGcrDLc=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="https://nien31102004.github.io/duynien/img/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="https://nien31102004.github.io/duynien/img/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="https://nien31102004.github.io/duynien/img/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="https://nien31102004.github.io/duynien/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://nien31102004.github.io/duynien/images/apple-touch-icon.png">
+
+<link rel="manifest" href="https://nien31102004.github.io/duynien/site.webmanifest">
+<link rel="mask-icon" href="https://nien31102004.github.io/duynien/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://nien31102004.github.io/duynien/">
+      TimoBlog
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="https://nien31102004.github.io/duynien/gioi_thieu/">Giới thiệu</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="https://nien31102004.github.io/duynien/posts/">Bài viết</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="https://nien31102004.github.io/duynien/lien_he/">Liên hệ</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://nien31102004.github.io/duynien/posts/bai4/">
+              REST API Siêu Gọn: Spring Boot (Java) vs Express.js (Node.js)
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-10-13T11:00:00&#43;07:00">
+                tháng 10 13, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              
+            </span>
+          </div>
+          
+          
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/java/">Java</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/javascript/">JavaScript</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/spring-boot/">Spring Boot</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/node.js/">Node.js</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/api/">API</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="-giới-thiệu">
+  🧠 Giới thiệu
+  <a class="heading-link" href="#-gi%e1%bb%9bi-thi%e1%bb%87u">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Xây dựng <strong>REST API</strong> là kỹ năng Backend cốt lõi. Trong thế giới Java, <strong>Spring Boot</strong> là vua. Trong thế giới JavaScript, <strong>Node.js</strong> cùng framework <strong>Express.js</strong> là lựa chọn phổ biến nhất. Bài viết này sẽ so sánh cách bạn tạo một API đơn giản trả về JSON trong cả hai nền tảng.</p>
+<h2 id="-phần-1-java-backend-với-spring-boot">
+  ⚙️ Phần 1: Java Backend với Spring Boot
+  <a class="heading-link" href="#-ph%e1%ba%a7n-1-java-backend-v%e1%bb%9bi-spring-boot">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Spring Boot được thiết kế để tạo ra các ứng dụng độc lập (standalone) với cấu hình tối thiểu.</p>
+<h3 id="code-api-đơn-giản">
+  <strong>Code API đơn giản</strong>
+  <a class="heading-link" href="#code-api-%c4%91%c6%a1n-gi%e1%ba%a3n">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Chúng ta chỉ cần một Class duy nhất với Annotation <code>@RestController</code> để định nghĩa endpoint.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// File: SimpleController.java</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.GetMapping;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.RestController;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RestController</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SimpleController</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Định nghĩa endpoint GET tại đường dẫn /api/hello</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@GetMapping</span>(<span style="color:#e6db74">&#34;/api/hello&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> HelloResponse <span style="color:#a6e22e">sayHello</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Trả về một đối tượng, Spring Boot sẽ tự động chuyển thành JSON</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> HelloResponse(<span style="color:#e6db74">&#34;Java&#34;</span>, <span style="color:#e6db74">&#34;Xin chào từ Spring Boot!&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Class mô hình dữ liệu (Java POJO)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HelloResponse</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String lang;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String message;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Constructor, Getters, Setters...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">HelloResponse</span>(String lang, String message) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lang</span> <span style="color:#f92672">=</span> lang;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">message</span> <span style="color:#f92672">=</span> message;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ...</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Ưu điểm của Spring Boot:</p>
+<ul>
+<li>Cấu hình tối thiểu: Nhờ Auto-configuration.</li>
+<li>Mạnh mẽ: Hỗ trợ Dependency Injection, Security, Database transactions&hellip;</li>
+<li>Kiểu tĩnh: An toàn, dễ debug các lỗi liên quan đến kiểu dữ liệu.</li>
+</ul>
+<p>💡 Phần 2: JavaScript Backend với Node.js và Express</p>
+<p>Node.js cho phép JavaScript chạy ngoài trình duyệt, và Express.js là framework tối giản để xử lý routing.</p>
+<h3 id="code-api-đơn-giản-1">
+  <strong>Code API đơn giản</strong>
+  <a class="heading-link" href="#code-api-%c4%91%c6%a1n-gi%e1%ba%a3n-1">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Bạn cần khởi tạo server và định nghĩa routing thủ công.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// File: server.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">express</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;express&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">express</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">port</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3000</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Middleware để phân tích body JSON
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">express</span>.<span style="color:#a6e22e">json</span>()); 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Định nghĩa endpoint GET tại đường dẫn /api/hello
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;/api/hello&#39;</span>, (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Trả về Object JavaScript, Express tự động chuyển thành JSON
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">lang</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;JavaScript&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Xin chào từ Node.js &amp; Express!&#34;</span>
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// res.json() sẽ gửi JSON về client
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>(<span style="color:#a6e22e">response</span>); 
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Khởi động Server
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#a6e22e">port</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Server Node.js đang chạy ở cổng </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">port</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>Ưu điểm của Node.js/Express:</p>
+<ul>
+<li>Tốc độ triển khai: Cực nhanh, code ngắn gọn.</li>
+<li>Bất đồng bộ: Hoàn hảo cho các tác vụ I/O (Database, Network).</li>
+<li>Dùng chung ngôn ngữ: Lập trình viên Full-stack chỉ cần học 1 ngôn ngữ.</li>
+</ul>
+<p>🧩 Kết luận</p>
+<table>
+  <thead>
+      <tr>
+          <th>Đặc điểm</th>
+          <th>Java (Spring Boot)</th>
+          <th>JavaScript (Node.js/Express)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Tốc độ Dev</td>
+          <td>Khởi tạo ban đầu hơi lâu (tạo project), nhưng về sau ổn định.</td>
+          <td>Rất nhanh, cài đặt đơn giản (npm install express).</td>
+      </tr>
+      <tr>
+          <td>Môi trường</td>
+          <td>JVM.</td>
+          <td>JavaScript Engine (V8).</td>
+      </tr>
+      <tr>
+          <td>Kiểm soát</td>
+          <td>Rất chặt chẽ, an toàn cho các nghiệp vụ phức tạp.</td>
+          <td>Linh hoạt, phù hợp API đơn giản, microservices.</td>
+      </tr>
+  </tbody>
+</table>
+<p>Cả hai đều là lựa chọn tuyệt vời. Tùy vào quy mô dự án và kiến thức đội ngũ, bạn sẽ chọn nền tảng phù hợp.</p>
+<p>📘 Tham khảo:</p>
+<ul>
+<li><a href="https://spring.io/projects/spring-boot"  class="external-link" target="_blank" rel="noopener">Spring Boot Official Site</a></li>
+<li><a href="https://expressjs.com/en/guide/routing.html"  class="external-link" target="_blank" rel="noopener">Express.js Official Guide</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2023 -
+    
+    2025
+     Nguyễn Duy Niên 
+    ·
+    
+     <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="https://nien31102004.github.io/duynien/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

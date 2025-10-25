@@ -1,4 +1,19 @@
-<!doctype html><html lang=vi><head><title>Kiểu Dữ Liệu: Static (Java) vs Dynamic (JavaScript) và Cuộc chiến Var, Let, Const · TimoBlog</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta name=author content="Nguyễn Duy Niên"><meta name=description content="
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <title>
+  Kiểu Dữ Liệu: Static (Java) vs Dynamic (JavaScript) và Cuộc chiến Var, Let, Const · TimoBlog
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Nguyễn Duy Niên">
+<meta name="description" content="
   🧠 Giới thiệu
   
     
@@ -6,52 +21,426 @@
   
 
 Hiểu cách một ngôn ngữ quản lý biến và kiểu dữ liệu là bước đầu để viết code hiệu quả và tránh lỗi vặt.
-Sự khác biệt lớn nhất giữa Java và JavaScript nằm ở hệ thống kiểu (Type System): Java là kiểu tĩnh, JavaScript là kiểu động. Điều này ảnh hưởng tới cách khai báo, sử dụng và debug code."><meta name=keywords content="blog,developer,personal"><meta name=twitter:card content="summary"><meta name=twitter:title content="Kiểu Dữ Liệu: Static (Java) vs Dynamic (JavaScript) và Cuộc chiến Var, Let, Const"><meta name=twitter:description content="🧠 Giới thiệuLink to headingHiểu cách một ngôn ngữ quản lý biến và kiểu dữ liệu là bước đầu để viết code hiệu quả và tránh lỗi vặt.
-Sự khác biệt lớn nhất giữa Java và JavaScript nằm ở hệ thống kiểu (Type System): Java là kiểu tĩnh, JavaScript là kiểu động. Điều này ảnh hưởng tới cách khai báo, sử dụng và debug code."><meta property="og:url" content="https://nien31102004.github.io/duynien/posts/bai2/"><meta property="og:site_name" content="TimoBlog"><meta property="og:title" content="Kiểu Dữ Liệu: Static (Java) vs Dynamic (JavaScript) và Cuộc chiến Var, Let, Const"><meta property="og:description" content="🧠 Giới thiệuLink to headingHiểu cách một ngôn ngữ quản lý biến và kiểu dữ liệu là bước đầu để viết code hiệu quả và tránh lỗi vặt.
-Sự khác biệt lớn nhất giữa Java và JavaScript nằm ở hệ thống kiểu (Type System): Java là kiểu tĩnh, JavaScript là kiểu động. Điều này ảnh hưởng tới cách khai báo, sử dụng và debug code."><meta property="og:locale" content="vi"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-10-11T09:00:00+07:00"><meta property="article:modified_time" content="2025-10-11T09:00:00+07:00"><meta property="article:tag" content="Java"><meta property="article:tag" content="JavaScript"><meta property="article:tag" content="Kiểu Dữ Liệu"><meta property="article:tag" content="Cơ Bản"><link rel=canonical href=https://nien31102004.github.io/duynien/posts/bai2/><link rel=preload href=https://nien31102004.github.io/duynien/fonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=https://nien31102004.github.io/duynien/fonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=https://nien31102004.github.io/duynien/fonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin><link rel=stylesheet href=https://nien31102004.github.io/duynien/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin=anonymous media=screen><link rel=stylesheet href=https://nien31102004.github.io/duynien/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=https://nien31102004.github.io/duynien/img/favicon.svg sizes=any><link rel=icon type=image/png href=https://nien31102004.github.io/duynien/img/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=https://nien31102004.github.io/duynien/img/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=https://nien31102004.github.io/duynien/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=https://nien31102004.github.io/duynien/images/apple-touch-icon.png><link rel=manifest href=https://nien31102004.github.io/duynien/site.webmanifest><link rel=mask-icon href=https://nien31102004.github.io/duynien/images/safari-pinned-tab.svg color=#5bbad5></head><body class="preload-transitions colorscheme-auto"><div class=float-container><a id=dark-mode-toggle class=colorscheme-toggle><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></a></div><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=https://nien31102004.github.io/duynien/>TimoBlog
-</a><input type=checkbox id=menu-toggle>
-<label class="menu-button float-right" for=menu-toggle><i class="fa-solid fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=https://nien31102004.github.io/duynien/gioi_thieu/>Giới thiệu</a></li><li class=navigation-item><a class=navigation-link href=https://nien31102004.github.io/duynien/posts/>Bài viết</a></li><li class=navigation-item><a class=navigation-link href=https://nien31102004.github.io/duynien/lien_he/>Liên hệ</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title><a class=title-link href=https://nien31102004.github.io/duynien/posts/bai2/>Kiểu Dữ Liệu: Static (Java) vs Dynamic (JavaScript) và Cuộc chiến Var, Let, Const</a></h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fa-solid fa-calendar" aria-hidden=true></i>
-<time datetime=2025-10-11T09:00:00+07:00>tháng 10 11, 2025
-</time></span><span class=reading-time><i class="fa-solid fa-clock" aria-hidden=true></i></span></div><div class=tags><i class="fa-solid fa-tag" aria-hidden=true></i>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/java/>Java</a>
-</span><span class=separator>•</span>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/javascript/>JavaScript</a>
-</span><span class=separator>•</span>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/ki%E1%BB%83u-d%E1%BB%AF-li%E1%BB%87u/>Kiểu Dữ Liệu</a>
-</span><span class=separator>•</span>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/c%C6%A1-b%E1%BA%A3n/>Cơ Bản</a></span></div></div></header><div class=post-content><h2 id=-giới-thiệu>🧠 Giới thiệu
-<a class=heading-link href=#-gi%e1%bb%9bi-thi%e1%bb%87u><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Hiểu cách một ngôn ngữ quản lý biến và kiểu dữ liệu là bước đầu để viết code hiệu quả và tránh lỗi vặt.<br>Sự khác biệt lớn nhất giữa Java và JavaScript nằm ở hệ thống kiểu (Type System): <strong>Java là kiểu tĩnh</strong>, <strong>JavaScript là kiểu động</strong>. Điều này ảnh hưởng tới cách khai báo, sử dụng và debug code.</p><h2 id=-bảng-so-sánh-nhanh>📜 Bảng so sánh nhanh
-<a class=heading-link href=#-b%e1%ba%a3ng-so-s%c3%a1nh-nhanh><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><table><thead><tr><th style=text-align:left>Đặc điểm</th><th style=text-align:left>Java</th><th style=text-align:left>JavaScript</th></tr></thead><tbody><tr><td style=text-align:left>Ra mắt</td><td style=text-align:left>1995 (Sun Microsystems)</td><td style=text-align:left>1995 (Netscape)</td></tr><tr><td style=text-align:left>Mục tiêu</td><td style=text-align:left>Ứng dụng doanh nghiệp, Android, Desktop</td><td style=text-align:left>Trang web động (frontend), server-side (Node.js)</td></tr><tr><td style=text-align:left>Kiểu</td><td style=text-align:left>Statically typed</td><td style=text-align:left>Dynamically typed</td></tr><tr><td style=text-align:left>Cách khai báo hằng</td><td style=text-align:left>final</td><td style=text-align:left>const</td></tr></tbody></table><hr><h2 id=-cơ-chế-hoạt-động-runtime>⚙️ Cơ chế hoạt động (Runtime)
-<a class=heading-link href=#-c%c6%a1-ch%e1%ba%bf-ho%e1%ba%a1t-%c4%91%e1%bb%99ng-runtime><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><ul><li>Java: code được biên dịch thành bytecode và chạy trên JVM.</li><li>JavaScript: code được thông dịch / JIT bởi engine (V8, SpiderMonkey, v.v.), chạy trong trình duyệt hoặc Node.js.</li></ul><h3 id=ví-dụ-java-biên-dịch-kiểu-tĩnh>Ví dụ Java (biên dịch, kiểu tĩnh)
-<a class=heading-link href=#v%c3%ad-d%e1%bb%a5-java-bi%c3%aan-d%e1%bb%8bch-ki%e1%bb%83u-t%c4%a9nh><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#75715e>// Java: phải khai báo kiểu</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> age <span style=color:#f92672>=</span> 30;
-</span></span><span style=display:flex><span>String name <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;Alice&#34;</span>;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e>// Lỗi biên dịch nếu gán sai kiểu:</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>// age = &#34;Bob&#34;; // Compile-time error</span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>final</span> <span style=color:#66d9ef>double</span> PI <span style=color:#f92672>=</span> 3.<span style=color:#a6e22e>14159</span>; <span style=color:#75715e>// hằng</span>
-</span></span></code></pre></div><h3 id=ví-dụ-javascript-kiểu-động>Ví dụ JavaScript (kiểu động)
-<a class=heading-link href=#v%c3%ad-d%e1%bb%a5-javascript-ki%e1%bb%83u-%c4%91%e1%bb%99ng><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#75715e>// JavaScript: kiểu được xác định lúc runtime
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>value</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>30</span>;     <span style=color:#75715e>// Number
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>value</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;Thirty&#34;</span>;   <span style=color:#75715e>// bây giờ là String, hợp lệ
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>APP_NAME</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;MyApp&#34;</span>; <span style=color:#75715e>// hằng (tham chiếu không thể gán lại)
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>settings</span> <span style=color:#f92672>=</span> { <span style=color:#a6e22e>theme</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;dark&#39;</span> };
-</span></span><span style=display:flex><span><span style=color:#a6e22e>settings</span>.<span style=color:#a6e22e>theme</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;light&#39;</span>; <span style=color:#75715e>// hợp lệ (thay đổi thuộc tính)
-</span></span></span></code></pre></div><hr><h2 id=-var-vs-let-vs-const-javascript>🧩 Var vs Let vs Const (JavaScript)
-<a class=heading-link href=#-var-vs-let-vs-const-javascript><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><ul><li>var: function scope, dễ gây lỗi do hoisting — hạn chế dùng.</li><li>let: block scope, dùng cho biến có thể thay đổi.</li><li>const: block scope, dùng cho hằng (không thể gán lại biến), nhưng nội dung object/array có thể thay đổi.</li></ul><table><thead><tr><th>Từ khóa</th><th style=text-align:right>Phạm vi (scope)</th><th style=text-align:center>Có thể gán lại?</th><th>Gợi ý dùng</th></tr></thead><tbody><tr><td>var</td><td style=text-align:right>Function</td><td style=text-align:center>Có</td><td>Tránh dùng</td></tr><tr><td>let</td><td style=text-align:right>Block</td><td style=text-align:center>Có</td><td>Biến thay đổi</td></tr><tr><td>const</td><td style=text-align:right>Block</td><td style=text-align:center>Không</td><td>Hằng/tham chiếu cố định</td></tr></tbody></table><hr><h2 id=-kết-luận>✅ Kết luận
-<a class=heading-link href=#-k%e1%ba%bft-lu%e1%ba%adn><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><ul><li>Nếu bạn đang chuyển từ Java sang JavaScript: chú ý kiểu động — ưu tiên dùng <code>let</code>/<code>const</code> thay vì <code>var</code>.</li><li>Nếu bạn đang chuyển từ Java sang JavaScript: nhớ rằng Java yêu cầu khai báo kiểu tĩnh và có lợi cho việc phát hiện lỗi sớm.</li></ul><h2 id=-tham-khảo>🔗 Tham khảo
-<a class=heading-link href=#-tham-kh%e1%ba%a3o><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><ul><li><a href=https://docs.oracle.com/en/java/ class=external-link target=_blank rel=noopener>Oracle Java Documentation</a></li><li><a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let class=external-link target=_blank rel=noopener>MDN — let, const, var</a></li></ul></div><footer></footer></article></section></div><footer class=footer><section class=container>©
-2023 -
-2025
-Nguyễn Duy Niên
-·
-<a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> & <a href=https://github.com/luizdepra/hugo-coder/ target=_blank rel=noopener>Coder</a>.</section></footer></main><script src=https://nien31102004.github.io/duynien/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script></body></html>
+Sự khác biệt lớn nhất giữa Java và JavaScript nằm ở hệ thống kiểu (Type System): Java là kiểu tĩnh, JavaScript là kiểu động. Điều này ảnh hưởng tới cách khai báo, sử dụng và debug code.">
+<meta name="keywords" content="blog,developer,personal">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Kiểu Dữ Liệu: Static (Java) vs Dynamic (JavaScript) và Cuộc chiến Var, Let, Const">
+  <meta name="twitter:description" content="🧠 Giới thiệuLink to headingHiểu cách một ngôn ngữ quản lý biến và kiểu dữ liệu là bước đầu để viết code hiệu quả và tránh lỗi vặt.
+Sự khác biệt lớn nhất giữa Java và JavaScript nằm ở hệ thống kiểu (Type System): Java là kiểu tĩnh, JavaScript là kiểu động. Điều này ảnh hưởng tới cách khai báo, sử dụng và debug code.">
+
+<meta property="og:url" content="https://nien31102004.github.io/duynien/posts/bai2/">
+  <meta property="og:site_name" content="TimoBlog">
+  <meta property="og:title" content="Kiểu Dữ Liệu: Static (Java) vs Dynamic (JavaScript) và Cuộc chiến Var, Let, Const">
+  <meta property="og:description" content="🧠 Giới thiệuLink to headingHiểu cách một ngôn ngữ quản lý biến và kiểu dữ liệu là bước đầu để viết code hiệu quả và tránh lỗi vặt.
+Sự khác biệt lớn nhất giữa Java và JavaScript nằm ở hệ thống kiểu (Type System): Java là kiểu tĩnh, JavaScript là kiểu động. Điều này ảnh hưởng tới cách khai báo, sử dụng và debug code.">
+  <meta property="og:locale" content="vi">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-10-11T09:00:00+07:00">
+    <meta property="article:modified_time" content="2025-10-11T09:00:00+07:00">
+    <meta property="article:tag" content="Java">
+    <meta property="article:tag" content="JavaScript">
+    <meta property="article:tag" content="Kiểu Dữ Liệu">
+    <meta property="article:tag" content="Cơ Bản">
+
+
+
+
+<link rel="canonical" href="https://nien31102004.github.io/duynien/posts/bai2/">
+
+
+<link rel="preload" href="https://nien31102004.github.io/duynien/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://nien31102004.github.io/duynien/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://nien31102004.github.io/duynien/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="https://nien31102004.github.io/duynien/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="https://nien31102004.github.io/duynien/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+  
+    
+    <link rel="stylesheet" href="https://nien31102004.github.io/duynien/css/custom.min.b992c2f412798c1a6c6c493a45b1980f5b62c297330a0d403ec4b89c672b0cb7.css" integrity="sha256-uZLC9BJ5jBpsbEk6RbGYD1tiwpczCg1APsS4nGcrDLc=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="https://nien31102004.github.io/duynien/img/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="https://nien31102004.github.io/duynien/img/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="https://nien31102004.github.io/duynien/img/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="https://nien31102004.github.io/duynien/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://nien31102004.github.io/duynien/images/apple-touch-icon.png">
+
+<link rel="manifest" href="https://nien31102004.github.io/duynien/site.webmanifest">
+<link rel="mask-icon" href="https://nien31102004.github.io/duynien/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://nien31102004.github.io/duynien/">
+      TimoBlog
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="https://nien31102004.github.io/duynien/gioi_thieu/">Giới thiệu</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="https://nien31102004.github.io/duynien/posts/">Bài viết</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="https://nien31102004.github.io/duynien/lien_he/">Liên hệ</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://nien31102004.github.io/duynien/posts/bai2/">
+              Kiểu Dữ Liệu: Static (Java) vs Dynamic (JavaScript) và Cuộc chiến Var, Let, Const
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-10-11T09:00:00&#43;07:00">
+                tháng 10 11, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              
+            </span>
+          </div>
+          
+          
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/java/">Java</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/javascript/">JavaScript</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/ki%E1%BB%83u-d%E1%BB%AF-li%E1%BB%87u/">Kiểu Dữ Liệu</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/c%C6%A1-b%E1%BA%A3n/">Cơ Bản</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="-giới-thiệu">
+  🧠 Giới thiệu
+  <a class="heading-link" href="#-gi%e1%bb%9bi-thi%e1%bb%87u">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Hiểu cách một ngôn ngữ quản lý biến và kiểu dữ liệu là bước đầu để viết code hiệu quả và tránh lỗi vặt.<br>
+Sự khác biệt lớn nhất giữa Java và JavaScript nằm ở hệ thống kiểu (Type System): <strong>Java là kiểu tĩnh</strong>, <strong>JavaScript là kiểu động</strong>. Điều này ảnh hưởng tới cách khai báo, sử dụng và debug code.</p>
+<h2 id="-bảng-so-sánh-nhanh">
+  📜 Bảng so sánh nhanh
+  <a class="heading-link" href="#-b%e1%ba%a3ng-so-s%c3%a1nh-nhanh">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Đặc điểm</th>
+          <th style="text-align: left">Java</th>
+          <th style="text-align: left">JavaScript</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Ra mắt</td>
+          <td style="text-align: left">1995 (Sun Microsystems)</td>
+          <td style="text-align: left">1995 (Netscape)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Mục tiêu</td>
+          <td style="text-align: left">Ứng dụng doanh nghiệp, Android, Desktop</td>
+          <td style="text-align: left">Trang web động (frontend), server-side (Node.js)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Kiểu</td>
+          <td style="text-align: left">Statically typed</td>
+          <td style="text-align: left">Dynamically typed</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Cách khai báo hằng</td>
+          <td style="text-align: left">final</td>
+          <td style="text-align: left">const</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-cơ-chế-hoạt-động-runtime">
+  ⚙️ Cơ chế hoạt động (Runtime)
+  <a class="heading-link" href="#-c%c6%a1-ch%e1%ba%bf-ho%e1%ba%a1t-%c4%91%e1%bb%99ng-runtime">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>Java: code được biên dịch thành bytecode và chạy trên JVM.</li>
+<li>JavaScript: code được thông dịch / JIT bởi engine (V8, SpiderMonkey, v.v.), chạy trong trình duyệt hoặc Node.js.</li>
+</ul>
+<h3 id="ví-dụ-java-biên-dịch-kiểu-tĩnh">
+  Ví dụ Java (biên dịch, kiểu tĩnh)
+  <a class="heading-link" href="#v%c3%ad-d%e1%bb%a5-java-bi%c3%aan-d%e1%bb%8bch-ki%e1%bb%83u-t%c4%a9nh">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Java: phải khai báo kiểu</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> age <span style="color:#f92672">=</span> 30;
+</span></span><span style="display:flex;"><span>String name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Alice&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Lỗi biên dịch nếu gán sai kiểu:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// age = &#34;Bob&#34;; // Compile-time error</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">double</span> PI <span style="color:#f92672">=</span> 3.<span style="color:#a6e22e">14159</span>; <span style="color:#75715e">// hằng</span>
+</span></span></code></pre></div><h3 id="ví-dụ-javascript-kiểu-động">
+  Ví dụ JavaScript (kiểu động)
+  <a class="heading-link" href="#v%c3%ad-d%e1%bb%a5-javascript-ki%e1%bb%83u-%c4%91%e1%bb%99ng">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// JavaScript: kiểu được xác định lúc runtime
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>;     <span style="color:#75715e">// Number
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Thirty&#34;</span>;   <span style="color:#75715e">// bây giờ là String, hợp lệ
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">APP_NAME</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;MyApp&#34;</span>; <span style="color:#75715e">// hằng (tham chiếu không thể gán lại)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">settings</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">theme</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;dark&#39;</span> };
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">settings</span>.<span style="color:#a6e22e">theme</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;light&#39;</span>; <span style="color:#75715e">// hợp lệ (thay đổi thuộc tính)
+</span></span></span></code></pre></div><hr>
+<h2 id="-var-vs-let-vs-const-javascript">
+  🧩 Var vs Let vs Const (JavaScript)
+  <a class="heading-link" href="#-var-vs-let-vs-const-javascript">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>var: function scope, dễ gây lỗi do hoisting — hạn chế dùng.</li>
+<li>let: block scope, dùng cho biến có thể thay đổi.</li>
+<li>const: block scope, dùng cho hằng (không thể gán lại biến), nhưng nội dung object/array có thể thay đổi.</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Từ khóa</th>
+          <th style="text-align: right">Phạm vi (scope)</th>
+          <th style="text-align: center">Có thể gán lại?</th>
+          <th>Gợi ý dùng</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>var</td>
+          <td style="text-align: right">Function</td>
+          <td style="text-align: center">Có</td>
+          <td>Tránh dùng</td>
+      </tr>
+      <tr>
+          <td>let</td>
+          <td style="text-align: right">Block</td>
+          <td style="text-align: center">Có</td>
+          <td>Biến thay đổi</td>
+      </tr>
+      <tr>
+          <td>const</td>
+          <td style="text-align: right">Block</td>
+          <td style="text-align: center">Không</td>
+          <td>Hằng/tham chiếu cố định</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-kết-luận">
+  ✅ Kết luận
+  <a class="heading-link" href="#-k%e1%ba%bft-lu%e1%ba%adn">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>Nếu bạn đang chuyển từ Java sang JavaScript: chú ý kiểu động — ưu tiên dùng <code>let</code>/<code>const</code> thay vì <code>var</code>.</li>
+<li>Nếu bạn đang chuyển từ Java sang JavaScript: nhớ rằng Java yêu cầu khai báo kiểu tĩnh và có lợi cho việc phát hiện lỗi sớm.</li>
+</ul>
+<h2 id="-tham-khảo">
+  🔗 Tham khảo
+  <a class="heading-link" href="#-tham-kh%e1%ba%a3o">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en/java/"  class="external-link" target="_blank" rel="noopener">Oracle Java Documentation</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let"  class="external-link" target="_blank" rel="noopener">MDN — let, const, var</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2023 -
+    
+    2025
+     Nguyễn Duy Niên 
+    ·
+    
+     <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="https://nien31102004.github.io/duynien/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

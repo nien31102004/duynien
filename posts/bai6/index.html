@@ -1,11 +1,26 @@
-<!doctype html><html lang=vi><head><title>Trao Đổi Dữ Liệu: Jackson (Java) và Fetch API (JS) – Nói chuyện bằng JSON · TimoBlog</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta name=author content="Nguyễn Duy Niên"><meta name=description content="
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <title>
+  Trao Đổi Dữ Liệu: Jackson (Java) và Fetch API (JS) – Nói chuyện bằng JSON · TimoBlog
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Nguyễn Duy Niên">
+<meta name="description" content="
   🧠 Giới thiệu
   
     
     Link to heading
   
 
-JSON (JavaScript Object Notation) là định dạng chuẩn để trao đổi dữ liệu giữa backend và frontend. Bài này so sánh cách (de)serialize và gọi API trong Java (Jackson) và JavaScript (Fetch + native JSON).
+JSON (JavaScript Object Notation) là định dạng chuẩn để trao đổi dữ liệu giữa backend và frontend. Bài này so sánh cách (de)serialize và gọi API trong Java (Jackson) và JavaScript (Fetch &#43; native JSON).
 
 
   ⚙️ Phần 1: Java — Jackson (ObjectMapper)
@@ -14,85 +29,433 @@ JSON (JavaScript Object Notation) là định dạng chuẩn để trao đổi d
     Link to heading
   
 
-Jackson là thư viện phổ biến để (de)serialize JSON trong Java. POJO cần constructor không tham số (và getters/setters nếu dùng truy cập private fields)."><meta name=keywords content="blog,developer,personal"><meta name=twitter:card content="summary"><meta name=twitter:title content="Trao Đổi Dữ Liệu: Jackson (Java) và Fetch API (JS) – Nói chuyện bằng JSON"><meta name=twitter:description content="🧠 Giới thiệuLink to headingJSON (JavaScript Object Notation) là định dạng chuẩn để trao đổi dữ liệu giữa backend và frontend. Bài này so sánh cách (de)serialize và gọi API trong Java (Jackson) và JavaScript (Fetch + native JSON).
-⚙️ Phần 1: Java — Jackson (ObjectMapper)Link to headingJackson là thư viện phổ biến để (de)serialize JSON trong Java. POJO cần constructor không tham số (và getters/setters nếu dùng truy cập private fields)."><meta property="og:url" content="https://nien31102004.github.io/duynien/posts/bai6/"><meta property="og:site_name" content="TimoBlog"><meta property="og:title" content="Trao Đổi Dữ Liệu: Jackson (Java) và Fetch API (JS) – Nói chuyện bằng JSON"><meta property="og:description" content="🧠 Giới thiệuLink to headingJSON (JavaScript Object Notation) là định dạng chuẩn để trao đổi dữ liệu giữa backend và frontend. Bài này so sánh cách (de)serialize và gọi API trong Java (Jackson) và JavaScript (Fetch + native JSON).
-⚙️ Phần 1: Java — Jackson (ObjectMapper)Link to headingJackson là thư viện phổ biến để (de)serialize JSON trong Java. POJO cần constructor không tham số (và getters/setters nếu dùng truy cập private fields)."><meta property="og:locale" content="vi"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-10-15T13:00:00+07:00"><meta property="article:modified_time" content="2025-10-15T13:00:00+07:00"><meta property="article:tag" content="Java"><meta property="article:tag" content="JavaScript"><meta property="article:tag" content="JSON"><meta property="article:tag" content="Jackson"><meta property="article:tag" content="Fetch API"><link rel=canonical href=https://nien31102004.github.io/duynien/posts/bai6/><link rel=preload href=https://nien31102004.github.io/duynien/fonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=https://nien31102004.github.io/duynien/fonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=https://nien31102004.github.io/duynien/fonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin><link rel=stylesheet href=https://nien31102004.github.io/duynien/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin=anonymous media=screen><link rel=stylesheet href=https://nien31102004.github.io/duynien/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=https://nien31102004.github.io/duynien/img/favicon.svg sizes=any><link rel=icon type=image/png href=https://nien31102004.github.io/duynien/img/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=https://nien31102004.github.io/duynien/img/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=https://nien31102004.github.io/duynien/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=https://nien31102004.github.io/duynien/images/apple-touch-icon.png><link rel=manifest href=https://nien31102004.github.io/duynien/site.webmanifest><link rel=mask-icon href=https://nien31102004.github.io/duynien/images/safari-pinned-tab.svg color=#5bbad5></head><body class="preload-transitions colorscheme-auto"><div class=float-container><a id=dark-mode-toggle class=colorscheme-toggle><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></a></div><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=https://nien31102004.github.io/duynien/>TimoBlog
-</a><input type=checkbox id=menu-toggle>
-<label class="menu-button float-right" for=menu-toggle><i class="fa-solid fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=https://nien31102004.github.io/duynien/gioi_thieu/>Giới thiệu</a></li><li class=navigation-item><a class=navigation-link href=https://nien31102004.github.io/duynien/posts/>Bài viết</a></li><li class=navigation-item><a class=navigation-link href=https://nien31102004.github.io/duynien/lien_he/>Liên hệ</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title><a class=title-link href=https://nien31102004.github.io/duynien/posts/bai6/>Trao Đổi Dữ Liệu: Jackson (Java) và Fetch API (JS) – Nói chuyện bằng JSON</a></h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fa-solid fa-calendar" aria-hidden=true></i>
-<time datetime=2025-10-15T13:00:00+07:00>tháng 10 15, 2025
-</time></span><span class=reading-time><i class="fa-solid fa-clock" aria-hidden=true></i></span></div><div class=tags><i class="fa-solid fa-tag" aria-hidden=true></i>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/java/>Java</a>
-</span><span class=separator>•</span>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/javascript/>JavaScript</a>
-</span><span class=separator>•</span>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/json/>JSON</a>
-</span><span class=separator>•</span>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/jackson/>Jackson</a>
-</span><span class=separator>•</span>
-<span class=tag><a href=https://nien31102004.github.io/duynien/tags/fetch-api/>Fetch API</a></span></div></div></header><div class=post-content><h2 id=-giới-thiệu>🧠 Giới thiệu
-<a class=heading-link href=#-gi%e1%bb%9bi-thi%e1%bb%87u><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p><strong>JSON (JavaScript Object Notation)</strong> là định dạng chuẩn để trao đổi dữ liệu giữa backend và frontend. Bài này so sánh cách (de)serialize và gọi API trong Java (Jackson) và JavaScript (Fetch + native JSON).</p><hr><h2 id=-phần-1-java--jackson-objectmapper>⚙️ Phần 1: Java — Jackson (ObjectMapper)
-<a class=heading-link href=#-ph%e1%ba%a7n-1-java--jackson-objectmapper><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Jackson là thư viện phổ biến để (de)serialize JSON trong Java. POJO cần constructor không tham số (và getters/setters nếu dùng truy cập private fields).</p><h3 id=ví-dụ-deserialization-json--java-object>Ví dụ: Deserialization (JSON → Java Object)
-<a class=heading-link href=#v%c3%ad-d%e1%bb%a5-deserialization-json--java-object><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>import</span> com.fasterxml.jackson.databind.ObjectMapper;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>User</span> {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> String name;
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>int</span> age;
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>User</span>() {} <span style=color:#75715e>// constructor rỗng cần thiết</span>
-</span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>JacksonDemo</span> {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span>(String<span style=color:#f92672>[]</span> args) <span style=color:#66d9ef>throws</span> Exception {
-</span></span><span style=display:flex><span>        ObjectMapper mapper <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ObjectMapper();
-</span></span><span style=display:flex><span>        String jsonString <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;{\&#34;name\&#34;:\&#34;Alice\&#34;,\&#34;age\&#34;:30}&#34;</span>;
-</span></span><span style=display:flex><span>        User user <span style=color:#f92672>=</span> mapper.<span style=color:#a6e22e>readValue</span>(jsonString, User.<span style=color:#a6e22e>class</span>);
-</span></span><span style=display:flex><span>        System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(<span style=color:#e6db74>&#34;Tên: &#34;</span> <span style=color:#f92672>+</span> user.<span style=color:#a6e22e>name</span>); <span style=color:#75715e>// Alice</span>
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><h3 id=ví-dụ-serialization-java-object--json>Ví dụ: Serialization (Java Object → JSON)
-<a class=heading-link href=#v%c3%ad-d%e1%bb%a5-serialization-java-object--json><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>User u <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> User();
-</span></span><span style=display:flex><span>u.<span style=color:#a6e22e>name</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;Bob&#34;</span>;
-</span></span><span style=display:flex><span>u.<span style=color:#a6e22e>age</span> <span style=color:#f92672>=</span> 25;
-</span></span><span style=display:flex><span>String jsonOut <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ObjectMapper().<span style=color:#a6e22e>writeValueAsString</span>(u);
-</span></span><span style=display:flex><span>System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>(jsonOut); <span style=color:#75715e>// {&#34;name&#34;:&#34;Bob&#34;,&#34;age&#34;:25}</span>
-</span></span></code></pre></div><p>Lưu ý: nếu dùng private fields, cung cấp getters/setters hoặc annotation phù hợp (@JsonProperty).</p><hr><h2 id=-phần-2-javascript--json-native--fetch-api>⚙️ Phần 2: JavaScript — JSON native + Fetch API
-<a class=heading-link href=#-ph%e1%ba%a7n-2-javascript--json-native--fetch-api><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>JavaScript có sẵn JSON.parse / JSON.stringify và Fetch API để gọi HTTP.</p><h3 id=serialize--deserialize>Serialize / Deserialize
-<a class=heading-link href=#serialize--deserialize><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>obj</span> <span style=color:#f92672>=</span> { <span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;Alice&#34;</span>, <span style=color:#a6e22e>age</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>30</span> };
-</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>jsonString</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>JSON</span>.<span style=color:#a6e22e>stringify</span>(<span style=color:#a6e22e>obj</span>);
-</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>parsed</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>JSON</span>.<span style=color:#a6e22e>parse</span>(<span style=color:#a6e22e>jsonString</span>);
-</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>parsed</span>.<span style=color:#a6e22e>name</span>); <span style=color:#75715e>// Alice
-</span></span></span></code></pre></div><h3 id=fetch-api-lấy-json-từ-server>Fetch API (lấy JSON từ server)
-<a class=heading-link href=#fetch-api-l%e1%ba%a5y-json-t%e1%bb%ab-server><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#a6e22e>fetch</span>(<span style=color:#e6db74>&#39;/api/hello&#39;</span>)
-</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>then</span>(<span style=color:#a6e22e>res</span> =&gt; {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span><span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>ok</span>) <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> Error(<span style=color:#e6db74>&#39;Network error&#39;</span>);
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>json</span>();
-</span></span><span style=display:flex><span>  })
-</span></span><span style=display:flex><span>  .<span style=color:#a6e22e>then</span>(<span style=color:#a6e22e>data</span> =&gt; <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#39;Server trả:&#39;</span>, <span style=color:#a6e22e>data</span>))
-</span></span><span style=display:flex><span>  .<span style=color:#66d9ef>catch</span>(<span style=color:#a6e22e>err</span> =&gt; <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>error</span>(<span style=color:#e6db74>&#39;Fetch error:&#39;</span>, <span style=color:#a6e22e>err</span>));
-</span></span></code></pre></div><p>Với async/await:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#66d9ef>async</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>load</span>() {
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>try</span> {
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>res</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>fetch</span>(<span style=color:#e6db74>&#39;/api/hello&#39;</span>);
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>data</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>json</span>();
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>data</span>);
-</span></span><span style=display:flex><span>  } <span style=color:#66d9ef>catch</span> (<span style=color:#a6e22e>e</span>) {
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>error</span>(<span style=color:#a6e22e>e</span>);
-</span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></div><hr><h2 id=-so-sánh-nhanh>🧩 So sánh nhanh
-<a class=heading-link href=#-so-s%c3%a1nh-nhanh><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><table><thead><tr><th>Tác vụ</th><th>Java (Jackson)</th><th>JavaScript (Native)</th></tr></thead><tbody><tr><td>Serialize / Deserialize</td><td>ObjectMapper, cần POJO</td><td>JSON.stringify / JSON.parse</td></tr><tr><td>Gọi API</td><td>RestTemplate / HttpClient / WebClient</td><td>fetch / axios</td></tr><tr><td>Khi dùng</td><td>Hữu ích cho hệ thống lớn, kiểm soát cấu trúc</td><td>Nhanh, linh hoạt cho frontend</td></tr></tbody></table><hr><h2 id=-kết-luận>✅ Kết luận
-<a class=heading-link href=#-k%e1%ba%bft-lu%e1%ba%adn><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><ul><li>Jackson rất mạnh cho backend Java: kiểm soát kiểu, cấu trúc JSON rõ ràng.</li><li>JavaScript có API JSON/Fetch sẵn, thuận tiện cho frontend.</li><li>Kết hợp: backend trả JSON (Jackson), frontend tiêu thụ bằng fetch — hai bên &ldquo;nói chuyện&rdquo; mượt mà.</li></ul><h2 id=-tham-khảo>📘 Tham khảo
-<a class=heading-link href=#-tham-kh%e1%ba%a3o><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><ul><li><a href=https://github.com/FasterXML/jackson class=external-link target=_blank rel=noopener>Jackson Project Documentation</a></li><li><a href=https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch class=external-link target=_blank rel=noopener>MDN — Using Fetch</a></li></ul></div><footer></footer></article></section></div><footer class=footer><section class=container>©
-2023 -
-2025
-Nguyễn Duy Niên
-·
-<a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> & <a href=https://github.com/luizdepra/hugo-coder/ target=_blank rel=noopener>Coder</a>.</section></footer></main><script src=https://nien31102004.github.io/duynien/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script></body></html>
+Jackson là thư viện phổ biến để (de)serialize JSON trong Java. POJO cần constructor không tham số (và getters/setters nếu dùng truy cập private fields).">
+<meta name="keywords" content="blog,developer,personal">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Trao Đổi Dữ Liệu: Jackson (Java) và Fetch API (JS) – Nói chuyện bằng JSON">
+  <meta name="twitter:description" content="🧠 Giới thiệuLink to headingJSON (JavaScript Object Notation) là định dạng chuẩn để trao đổi dữ liệu giữa backend và frontend. Bài này so sánh cách (de)serialize và gọi API trong Java (Jackson) và JavaScript (Fetch &#43; native JSON).
+⚙️ Phần 1: Java — Jackson (ObjectMapper)Link to headingJackson là thư viện phổ biến để (de)serialize JSON trong Java. POJO cần constructor không tham số (và getters/setters nếu dùng truy cập private fields).">
+
+<meta property="og:url" content="https://nien31102004.github.io/duynien/posts/bai6/">
+  <meta property="og:site_name" content="TimoBlog">
+  <meta property="og:title" content="Trao Đổi Dữ Liệu: Jackson (Java) và Fetch API (JS) – Nói chuyện bằng JSON">
+  <meta property="og:description" content="🧠 Giới thiệuLink to headingJSON (JavaScript Object Notation) là định dạng chuẩn để trao đổi dữ liệu giữa backend và frontend. Bài này so sánh cách (de)serialize và gọi API trong Java (Jackson) và JavaScript (Fetch &#43; native JSON).
+⚙️ Phần 1: Java — Jackson (ObjectMapper)Link to headingJackson là thư viện phổ biến để (de)serialize JSON trong Java. POJO cần constructor không tham số (và getters/setters nếu dùng truy cập private fields).">
+  <meta property="og:locale" content="vi">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-10-15T13:00:00+07:00">
+    <meta property="article:modified_time" content="2025-10-15T13:00:00+07:00">
+    <meta property="article:tag" content="Java">
+    <meta property="article:tag" content="JavaScript">
+    <meta property="article:tag" content="JSON">
+    <meta property="article:tag" content="Jackson">
+    <meta property="article:tag" content="Fetch API">
+
+
+
+
+<link rel="canonical" href="https://nien31102004.github.io/duynien/posts/bai6/">
+
+
+<link rel="preload" href="https://nien31102004.github.io/duynien/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://nien31102004.github.io/duynien/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://nien31102004.github.io/duynien/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="https://nien31102004.github.io/duynien/css/coder.min.4b392a85107b91dbdabc528edf014a6ab1a30cd44cafcd5325c8efe796794fca.css" integrity="sha256-SzkqhRB7kdvavFKO3wFKarGjDNRMr81TJcjv55Z5T8o=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="https://nien31102004.github.io/duynien/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+  
+    
+    <link rel="stylesheet" href="https://nien31102004.github.io/duynien/css/custom.min.b992c2f412798c1a6c6c493a45b1980f5b62c297330a0d403ec4b89c672b0cb7.css" integrity="sha256-uZLC9BJ5jBpsbEk6RbGYD1tiwpczCg1APsS4nGcrDLc=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="https://nien31102004.github.io/duynien/img/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="https://nien31102004.github.io/duynien/img/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="https://nien31102004.github.io/duynien/img/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="https://nien31102004.github.io/duynien/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://nien31102004.github.io/duynien/images/apple-touch-icon.png">
+
+<link rel="manifest" href="https://nien31102004.github.io/duynien/site.webmanifest">
+<link rel="mask-icon" href="https://nien31102004.github.io/duynien/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://nien31102004.github.io/duynien/">
+      TimoBlog
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="https://nien31102004.github.io/duynien/gioi_thieu/">Giới thiệu</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="https://nien31102004.github.io/duynien/posts/">Bài viết</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="https://nien31102004.github.io/duynien/lien_he/">Liên hệ</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://nien31102004.github.io/duynien/posts/bai6/">
+              Trao Đổi Dữ Liệu: Jackson (Java) và Fetch API (JS) – Nói chuyện bằng JSON
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-10-15T13:00:00&#43;07:00">
+                tháng 10 15, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              
+            </span>
+          </div>
+          
+          
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/java/">Java</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/javascript/">JavaScript</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/json/">JSON</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/jackson/">Jackson</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="https://nien31102004.github.io/duynien/tags/fetch-api/">Fetch API</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h2 id="-giới-thiệu">
+  🧠 Giới thiệu
+  <a class="heading-link" href="#-gi%e1%bb%9bi-thi%e1%bb%87u">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p><strong>JSON (JavaScript Object Notation)</strong> là định dạng chuẩn để trao đổi dữ liệu giữa backend và frontend. Bài này so sánh cách (de)serialize và gọi API trong Java (Jackson) và JavaScript (Fetch + native JSON).</p>
+<hr>
+<h2 id="-phần-1-java--jackson-objectmapper">
+  ⚙️ Phần 1: Java — Jackson (ObjectMapper)
+  <a class="heading-link" href="#-ph%e1%ba%a7n-1-java--jackson-objectmapper">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Jackson là thư viện phổ biến để (de)serialize JSON trong Java. POJO cần constructor không tham số (và getters/setters nếu dùng truy cập private fields).</p>
+<h3 id="ví-dụ-deserialization-json--java-object">
+  Ví dụ: Deserialization (JSON → Java Object)
+  <a class="heading-link" href="#v%c3%ad-d%e1%bb%a5-deserialization-json--java-object">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> com.fasterxml.jackson.databind.ObjectMapper;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String name;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> age;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">User</span>() {} <span style="color:#75715e">// constructor rỗng cần thiết</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">JacksonDemo</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>        ObjectMapper mapper <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ObjectMapper();
+</span></span><span style="display:flex;"><span>        String jsonString <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;{\&#34;name\&#34;:\&#34;Alice\&#34;,\&#34;age\&#34;:30}&#34;</span>;
+</span></span><span style="display:flex;"><span>        User user <span style="color:#f92672">=</span> mapper.<span style="color:#a6e22e">readValue</span>(jsonString, User.<span style="color:#a6e22e">class</span>);
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Tên: &#34;</span> <span style="color:#f92672">+</span> user.<span style="color:#a6e22e">name</span>); <span style="color:#75715e">// Alice</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="ví-dụ-serialization-java-object--json">
+  Ví dụ: Serialization (Java Object → JSON)
+  <a class="heading-link" href="#v%c3%ad-d%e1%bb%a5-serialization-java-object--json">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>User u <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> User();
+</span></span><span style="display:flex;"><span>u.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Bob&#34;</span>;
+</span></span><span style="display:flex;"><span>u.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> 25;
+</span></span><span style="display:flex;"><span>String jsonOut <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ObjectMapper().<span style="color:#a6e22e">writeValueAsString</span>(u);
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(jsonOut); <span style="color:#75715e">// {&#34;name&#34;:&#34;Bob&#34;,&#34;age&#34;:25}</span>
+</span></span></code></pre></div><p>Lưu ý: nếu dùng private fields, cung cấp getters/setters hoặc annotation phù hợp (@JsonProperty).</p>
+<hr>
+<h2 id="-phần-2-javascript--json-native--fetch-api">
+  ⚙️ Phần 2: JavaScript — JSON native + Fetch API
+  <a class="heading-link" href="#-ph%e1%ba%a7n-2-javascript--json-native--fetch-api">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>JavaScript có sẵn JSON.parse / JSON.stringify và Fetch API để gọi HTTP.</p>
+<h3 id="serialize--deserialize">
+  Serialize / Deserialize
+  <a class="heading-link" href="#serialize--deserialize">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Alice&#34;</span>, <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">30</span> };
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">jsonString</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">obj</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">parsed</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">jsonString</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">parsed</span>.<span style="color:#a6e22e">name</span>); <span style="color:#75715e">// Alice
+</span></span></span></code></pre></div><h3 id="fetch-api-lấy-json-từ-server">
+  Fetch API (lấy JSON từ server)
+  <a class="heading-link" href="#fetch-api-l%e1%ba%a5y-json-t%e1%bb%ab-server">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#39;/api/hello&#39;</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">res</span> =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">ok</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Network error&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>();
+</span></span><span style="display:flex;"><span>  })
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">data</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Server trả:&#39;</span>, <span style="color:#a6e22e">data</span>))
+</span></span><span style="display:flex;"><span>  .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">err</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Fetch error:&#39;</span>, <span style="color:#a6e22e">err</span>));
+</span></span></code></pre></div><p>Với async/await:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">load</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">res</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#39;/api/hello&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">data</span>);
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">e</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">e</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="-so-sánh-nhanh">
+  🧩 So sánh nhanh
+  <a class="heading-link" href="#-so-s%c3%a1nh-nhanh">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Tác vụ</th>
+          <th>Java (Jackson)</th>
+          <th>JavaScript (Native)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Serialize / Deserialize</td>
+          <td>ObjectMapper, cần POJO</td>
+          <td>JSON.stringify / JSON.parse</td>
+      </tr>
+      <tr>
+          <td>Gọi API</td>
+          <td>RestTemplate / HttpClient / WebClient</td>
+          <td>fetch / axios</td>
+      </tr>
+      <tr>
+          <td>Khi dùng</td>
+          <td>Hữu ích cho hệ thống lớn, kiểm soát cấu trúc</td>
+          <td>Nhanh, linh hoạt cho frontend</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-kết-luận">
+  ✅ Kết luận
+  <a class="heading-link" href="#-k%e1%ba%bft-lu%e1%ba%adn">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li>Jackson rất mạnh cho backend Java: kiểm soát kiểu, cấu trúc JSON rõ ràng.</li>
+<li>JavaScript có API JSON/Fetch sẵn, thuận tiện cho frontend.</li>
+<li>Kết hợp: backend trả JSON (Jackson), frontend tiêu thụ bằng fetch — hai bên &ldquo;nói chuyện&rdquo; mượt mà.</li>
+</ul>
+<h2 id="-tham-khảo">
+  📘 Tham khảo
+  <a class="heading-link" href="#-tham-kh%e1%ba%a3o">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<ul>
+<li><a href="https://github.com/FasterXML/jackson"  class="external-link" target="_blank" rel="noopener">Jackson Project Documentation</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch"  class="external-link" target="_blank" rel="noopener">MDN — Using Fetch</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2023 -
+    
+    2025
+     Nguyễn Duy Niên 
+    ·
+    
+     <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="https://nien31102004.github.io/duynien/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

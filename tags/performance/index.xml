@@ -1,16 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Performance on TimoBlog</title><link>https://nien31102004.github.io/duynien/tags/performance/</link><description>Recent content in Performance on TimoBlog</description><generator>Hugo</generator><language>vi</language><lastBuildDate>Sat, 18 Oct 2025 16:00:00 +0700</lastBuildDate><atom:link href="https://nien31102004.github.io/duynien/tags/performance/index.xml" rel="self" type="application/rss+xml"/><item><title>Tối Ưu Hiệu Năng: Mẹo Vặt Giúp Java Chạy Nhanh và JavaScript Không Bị Đơ</title><link>https://nien31102004.github.io/duynien/posts/bai9/</link><pubDate>Sat, 18 Oct 2025 16:00:00 +0700</pubDate><guid>https://nien31102004.github.io/duynien/posts/bai9/</guid><description>&lt;h2 id="-giới-thiệu"&gt;
- 🧠 Giới thiệu
- &lt;a class="heading-link" href="#-gi%e1%bb%9bi-thi%e1%bb%87u"&gt;
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
- &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
- &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Tối ưu hiệu năng không chỉ là làm cho code chạy nhanh hơn, mà còn là sử dụng tài nguyên (CPU, bộ nhớ) một cách hiệu quả. Do có kiến trúc rất khác nhau (Java là JVM, JavaScript là Event Loop), chiến lược tối ưu cho mỗi ngôn ngữ cũng khác biệt.&lt;/p&gt;
-&lt;h2 id="-phần-1-tối-ưu-hiệu-năng-trong-java"&gt;
- ⚙️ Phần 1: Tối ưu hiệu năng trong Java
- &lt;a class="heading-link" href="#-ph%e1%ba%a7n-1-t%e1%bb%91i-%c6%b0u-hi%e1%bb%87u-n%c4%83ng-trong-java"&gt;
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
- &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
- &lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Việc tối ưu Java thường tập trung vào quản lý bộ nhớ (Heap Memory), tối thiểu hóa việc tạo Object không cần thiết, và tận dụng đa luồng (Threading) hiệu quả.&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Performance on TimoBlog</title>
+    <link>https://nien31102004.github.io/duynien/tags/performance/</link>
+    <description>Recent content in Performance on TimoBlog</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <lastBuildDate>Sat, 18 Oct 2025 16:00:00 +0700</lastBuildDate>
+    <atom:link href="https://nien31102004.github.io/duynien/tags/performance/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tối Ưu Hiệu Năng: Mẹo Vặt Giúp Java Chạy Nhanh và JavaScript Không Bị Đơ</title>
+      <link>https://nien31102004.github.io/duynien/posts/bai9/</link>
+      <pubDate>Sat, 18 Oct 2025 16:00:00 +0700</pubDate>
+      <guid>https://nien31102004.github.io/duynien/posts/bai9/</guid>
+      <description>&lt;h2 id=&#34;-giới-thiệu&#34;&gt;&#xD;&#xA;  🧠 Giới thiệu&#xD;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#-gi%e1%bb%9bi-thi%e1%bb%87u&#34;&gt;&#xD;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xD;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xD;&#xA;  &lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;Tối ưu hiệu năng không chỉ là làm cho code chạy nhanh hơn, mà còn là sử dụng tài nguyên (CPU, bộ nhớ) một cách hiệu quả. Do có kiến trúc rất khác nhau (Java là JVM, JavaScript là Event Loop), chiến lược tối ưu cho mỗi ngôn ngữ cũng khác biệt.&lt;/p&gt;&#xA;&lt;h2 id=&#34;-phần-1-tối-ưu-hiệu-năng-trong-java&#34;&gt;&#xD;&#xA;  ⚙️ Phần 1: Tối ưu hiệu năng trong Java&#xD;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#-ph%e1%ba%a7n-1-t%e1%bb%91i-%c6%b0u-hi%e1%bb%87u-n%c4%83ng-trong-java&#34;&gt;&#xD;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link to heading&#34;&gt;&lt;/i&gt;&#xD;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link to heading&lt;/span&gt;&#xD;&#xA;  &lt;/a&gt;&#xD;&#xA;&lt;/h2&gt;&#xD;&#xA;&lt;p&gt;Việc tối ưu Java thường tập trung vào quản lý bộ nhớ (Heap Memory), tối thiểu hóa việc tạo Object không cần thiết, và tận dụng đa luồng (Threading) hiệu quả.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
